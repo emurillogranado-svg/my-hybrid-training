@@ -1,6 +1,4 @@
-# my-hybrid-training
-mi plan de entrenamiento 
-# 🚴‍♂️ HYBRID ATHLETE OS (v2.0)
+_# 🚴‍♂️ HYBRID ATHLETE OS (v2.0)
 > **Stack:** CrossFit (Potencia) + Bodybuilding (Estética) + Gravel (Fondo / Van Rysel AF)
 
 ---
@@ -75,4 +73,4 @@ mi plan de entrenamiento
 ## 💡 CONSEJOS DE "CÓDIGO LIMPIO" (PRO-TIPS)
 1. **Hidratación:** Si haces CrossFit + Gym + Bici, mete 1g de sal en tu bidón de agua. Tus músculos lo agradecerán.
 2. **Prioridad:** El WOD es intensidad, el Gym es forma. Si el WOD te deja temblando, baja los pesos en el gym para evitar lesiones.
-3. **Recovery:** La Van Rysel es para ganar fondo, no para sprintar cada semáforo. Mantén el corazón tranquilo en las salidas de diario.
+3. **Recovery:** La Van Rysel es para ganar fondo, no para sprintar cada semáforo. Mantén el corazón tranquilo en las salidas de diario._
