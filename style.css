@@ -1,0 +1,184 @@
+:root{
+    --bg:#0f172a;
+    --card:#111827;
+    --accent:#ef4444;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',sans-serif;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:3rem;
+}
+
+.tab-container{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+    position:sticky;
+    top:0;
+    background:#0f172a;
+    padding:15px 0;
+    z-index:999;
+    overflow:auto;
+}
+
+.tab-button{
+    border:none;
+    padding:14px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    background:#1e293b;
+    color:white;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.tab-button:hover{
+    transform:translateY(-2px);
+    background:var(--accent);
+}
+
+.tab-button.active{
+    background:var(--accent);
+}
+
+.tab-content{
+    display:none;
+}
+
+.tab-content.active{
+    display:block;
+}
+
+.day-card{
+    background:var(--card);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+    border-left:6px solid var(--accent);
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.day-title{
+    font-size:1.6rem;
+    margin-bottom:20px;
+    font-weight:800;
+}
+
+.phase{
+    margin-bottom:20px;
+}
+
+.phase-title{
+    color:var(--accent);
+    font-weight:700;
+    display:block;
+    margin-bottom:8px;
+}
+
+.wod-box{
+    background:#1e293b;
+    padding:20px;
+    border-radius:14px;
+    margin-top:10px;
+    line-height:1.7;
+}
+
+.pro-tip{
+    margin-top:10px;
+    padding:12px;
+    border-radius:10px;
+    background:#0f172a;
+    color:var(--muted);
+}
+
+.timer-card{
+    background:linear-gradient(135deg,#111827,#1e293b);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+#display{
+    font-size:5rem;
+    font-weight:900;
+    color:#00ffcc;
+    margin:20px 0;
+}
+
+.timer-controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+}
+
+.timer-controls button{
+    border:none;
+    padding:14px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.timer-controls button:hover{
+    transform:scale(1.05);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #334155;
+    padding:14px;
+}
+
+th{
+    background:#1e293b;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    background:#0f172a;
+    color:white;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    #display{
+        font-size:3rem;
+    }
+
+    .day-card{
+        padding:18px;
+    }
+}
