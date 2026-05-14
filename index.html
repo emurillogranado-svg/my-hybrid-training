@@ -1,196 +1,496 @@
-# HYBRID ATHLETE OS
-### CrossFit + Bodybuilding + Gravel Performance System
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELOY HYBRID SYSTEM - FULL 4 WEEKS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3c3c;
+            --secondary: #00f2ff;
+            --bg: #050505;
+            --card: #121212;
+            --text: #ffffff;
+            --success: #00ff66;
+            --warning: #ffcc00;
+        }
 
----
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-<div align="center">
+        .app-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
 
-## 🚴‍♂️ ELOY PERFORMANCE STACK
+        /* --- CLOCK ENGINE --- */
+        .timer-box {
+            background: #000; border: 3px solid #222; border-radius: 20px;
+            padding: 30px; margin-bottom: 30px; text-align: center;
+            box-shadow: 0 0 30px rgba(255, 60, 60, 0.2);
+            position: sticky; top: 10px; z-index: 1000;
+        }
+        #display-time { font-family: 'Orbitron'; font-size: 5rem; color: var(--success); margin: 10px 0; }
+        .timer-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+        .stat-card { background: #111; padding: 8px; border-radius: 8px; border: 1px solid #222; }
+        .stat-card label { font-size: 0.6rem; color: #666; display: block; }
+        .stat-card span { font-family: 'Orbitron'; font-size: 1.1rem; color: var(--secondary); }
+        .timer-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 8px; }
+        button { padding: 10px; border-radius: 5px; border: none; background: #222; color: white; cursor: pointer; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+        .btn-main { background: var(--success); color: black; }
+        .btn-danger { background: var(--primary); }
 
-**CrossFit** → Potencia  
-**Bodybuilding** → Estética  
-**Gravel / Van Rysel AF** → Fondo & Resistencia
+        /* --- NAVIGATION --- */
+        .main-nav { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 20px; }
+        .nav-btn { flex: 0 0 auto; padding: 12px 20px; background: var(--card); border: 1px solid #333; }
+        .nav-btn.active { border-color: var(--primary); color: var(--primary); background: #1a0000; }
 
----
+        /* --- CONTENT CARDS --- */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.3s ease; }
 
-![status](https://img.shields.io/badge/STATUS-ACTIVE-success?style=for-the-badge)
-![phase](https://img.shields.io/badge/PHASE-HYBRID-blue?style=for-the-badge)
-![focus](https://img.shields.io/badge/FOCUS-PERFORMANCE-red?style=for-the-badge)
+        .day-card {
+            background: var(--card); border-radius: 15px; padding: 25px;
+            margin-bottom: 30px; border-left: 5px solid var(--primary);
+        }
+        .day-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 5px; }
+        .day-subtitle { color: var(--secondary); font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
-</div>
+        .block { margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px; }
+        .block-header { color: var(--warning); font-size: 0.7rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        
+        .exercise-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #222; }
+        .ex-name { font-weight: 600; font-size: 0.95rem; }
+        .ex-meta { font-size: 0.8rem; color: #888; }
+        .video-btn { color: var(--secondary); text-decoration: none; font-size: 0.7rem; border: 1px solid var(--secondary); padding: 2px 8px; border-radius: 4px; }
 
----
+        .wod-box { background: #000; border: 2px dashed var(--primary); padding: 20px; border-radius: 10px; margin: 15px 0; position: relative; }
+        .wod-box::after { content: "WOD"; position: absolute; top: -10px; right: 10px; background: var(--primary); color: white; padding: 2px 8px; font-size: 0.6rem; font-weight: 900; }
 
-# 📊 PERFORMANCE DASHBOARD
+        .sub-box { background: #1a1a00; border: 1px solid var(--warning); padding: 15px; border-radius: 8px; font-size: 0.85rem; }
 
-## GYM PROGRESSION TRACKER
-> Registra PRs y evolución semanal.
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
 
-| Día | Grupo | Lift Principal | Semana 1 | Semana 2 | Semana 3 | Objetivo |
-|:--|:--|:--|:--:|:--:|:--:|:--|
-| LUN | Pecho / Tríceps | Press Banca | ⬜ | ⬜ | ⬜ | +2.5kg |
-| MAR | Espalda / Bíceps | Jalón Pecho | ⬜ | ⬜ | ⬜ | Excéntrica controlada |
-| JUE | Pierna | Prensa 45º | ⬜ | ⬜ | ⬜ | Profundidad total |
-| VIE | Hombro / Brazos | Press Militar | ⬜ | ⬜ | ⬜ | Técnica estricta |
+    <div class="app-container">
+        
+        <!-- RELOJ CROSSFIT -->
+        <div class="timer-box">
+            <div id="c-mode" style="color:var(--primary); font-size:0.7rem; font-weight:900;">READY TO TRAIN</div>
+            <div id="display-time">00:00</div>
+            <div class="timer-stats">
+                <div class="stat-card"><label>Ronda</label><span id="c-round">01</span></div>
+                <div class="stat-card"><label>Estado</label><span id="c-status">--</span></div>
+                <div class="stat-card"><label>Semanas</label><span>4/4</span></div>
+            </div>
+            <div class="timer-btns">
+                <button onclick="setTimer('WOD')">WOD</button>
+                <button onclick="setTimer('EMOM')">EMOM</button>
+                <button onclick="setTimer('TABATA')">TABATA</button>
+                <button class="btn-main" id="start-btn" onclick="toggleTimer()">START</button>
+                <button class="btn-danger" onclick="resetTimer()">RESET</button>
+            </div>
+        </div>
 
----
+        <!-- NAVEGACIÓN -->
+        <nav class="main-nav">
+            <button class="nav-btn active" onclick="showTab(event, 'w1')">SEMANA 1</button>
+            <button class="nav-btn" onclick="showTab(event, 'w2')">SEMANA 2</button>
+            <button class="nav-btn" onclick="showTab(event, 'w3')">SEMANA 3</button>
+            <button class="nav-btn" onclick="showTab(event, 'w4')">SEMANA 4 (MAX)</button>
+            <button class="nav-btn" onclick="showTab(event, 'subs')" style="border-color: var(--warning);">SUSTITUCIONES</button>
+        </nav>
 
-# 📅 WEEK 01 — FOUNDATION
-### Objetivo → Base de fuerza + adaptación metabólica
+        <!-- CONTENIDO SEMANA 1 -->
+        <div id="w1" class="content-section active">
+            <!-- Lunes -->
+            <div class="day-card">
+                <div class="day-title">LUNES: PUSH + THE CHIEF</div>
+                <div class="day-subtitle">Enfoque: Técnica y Volumen Base</div>
+                
+                <div class="block">
+                    <span class="block-header">1. FUERZA (Chest)</span>
+                    <div class="exercise-row">
+                        <div class="ex-info"><span class="ex-name">Bench Press</span><br><span class="ex-meta">4 sets x 10 reps @ 65%</span></div>
+                        <a href="https://www.youtube.com/watch?v=rT7DgIZnZps" class="video-btn">VIDEO</a>
+                    </div>
+                    <div class="exercise-row">
+                        <div class="ex-info"><span class="ex-name">Power Clean Tech</span><br><span class="ex-meta">5 sets x 3 reps (ligero)</span></div>
+                        <a href="https://www.youtube.com/watch?v=KwYJTpQ_x5A" class="video-btn">VIDEO</a>
+                    </div>
+                </div>
 
-| Día | CrossFit WOD | Hipertrofia | Gravel / Bike |
-|:--|:--|:--|:--|
-| **LUN** | **The Chief** → 3 PC / 6 Push-ups / 9 Squats | Pecho + Tríceps | Zona 2 (30-60m) 🟢 |
-| **MAR** | **Pull & Run** → 400m / 15 Pull-ups / 30 KBS | Espalda + Bíceps | Zona 2 🟢 |
-| **MIÉ** | Recovery | Recovery | 🚵 Fondo +30km |
-| **JUE** | Lower Body Burn | Pierna completa | Soltar piernas 🔵 |
-| **VIE** | Annie Variant | Hombro + Brazos | Zona 2 🟢 |
-| **SÁB** | Recovery | Recovery | 🗺️ Ruta exploración |
-| **DOM** | Full Rest | Full Rest | Recuperación total |
+                <div class="wod-box">
+                    <strong>THE CHIEF:</strong> 5 Ciclos de AMRAP 3 min (1' descanso):<br>
+                    • 3 Power Cleans (60kg)<br>
+                    • 6 Push-ups<br>
+                    • 9 Air Squats
+                </div>
+                <p style="font-size: 0.8rem; color: #888;">*Tip: No te quemes en la primera ronda. Mantén un ritmo de "crucero".</p>
+            </div>
 
----
+            <!-- Martes -->
+            <div class="day-card" style="border-left-color: var(--secondary);">
+                <div class="day-title">MARTES: PULL + ENGINE</div>
+                <div class="day-subtitle">Enfoque: Tracción y Resistencia</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA (Back)</span>
+                    <div class="exercise-row">
+                        <div class="ex-info"><span class="ex-name">Deadlift</span><br><span class="ex-meta">3 sets x 8 reps @ 70%</span></div>
+                        <a href="https://www.youtube.com/watch?v=op9kVnSso6Q" class="video-btn">VIDEO</a>
+                    </div>
+                </div>
+                <div class="wod-box">
+                    <strong>FOR TIME:</strong> 3 Rondas:<br>
+                    • 400m Run<br>
+                    • 21 Kettlebell Swings (24kg)<br>
+                    • 12 Pull-ups
+                </div>
+            </div>
 
-## 🎬 WEEK 01 WODS
+            <!-- Miércoles (Bici) -->
+            <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">MIÉRCOLES: BICI (VAN RYSEL)</div>
+                <div class="day-subtitle">Recuperación Activa</div>
+                <p><strong>45km en Zona 2:</strong> Mantén una conversación sin ahogarte. Cadencia estable 90 rpm.</p>
+            </div>
 
-| WOD | Link |
-|:--|:--|
-| The Chief | https://youtu.be/KwYJTpQ_x5A |
-| Pull & Run | https://youtu.be/sSESeQAn2rk |
-| Lower Body Burn | https://youtu.be/qc9f8vV9L9M |
-| Annie | https://youtu.be/82jNjDS19lg |
+            <!-- Jueves -->
+            <div class="day-card">
+                <div class="day-title">JUEVES: LEGS + EMOM</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA (Legs)</span>
+                    <div class="exercise-row">
+                        <div class="ex-info"><span class="ex-name">Back Squat</span><br><span class="ex-meta">5 sets x 5 reps @ 75%</span></div>
+                        <a href="https://www.youtube.com/watch?v=ultWZbUMPL8" class="video-btn">VIDEO</a>
+                    </div>
+                </div>
+                <div class="wod-box">
+                    <strong>EMOM 16':</strong><br>
+                    Min 1: 15 Wall Balls<br>
+                    Min 2: 12 Burpees<br>
+                    Min 3: 15 Box Jumps<br>
+                    Min 4: Rest
+                </div>
+            </div>
 
----
+            <!-- Viernes -->
+            <div class="day-card">
+                <div class="day-title">VIERNES: SHOULDERS + ANNIE</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row">
+                        <div class="ex-info"><span class="ex-name">Push Press</span><br><span class="ex-meta">4 sets x 8 reps</span></div>
+                        <a href="https://www.youtube.com/watch?v=iaBVSJm78ko" class="video-btn">VIDEO</a>
+                    </div>
+                </div>
+                <div class="wod-box">
+                    <strong>ANNIE:</strong> 50-40-30-20-10 de:<br>
+                    • Double Unders<br>
+                    • Sit-ups
+                </div>
+            </div>
 
-# 📅 WEEK 02 — METABOLIC
-### Objetivo → Resistencia y tolerancia al volumen
+            <!-- Sábado -->
+            <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">SÁBADO: FONDO BICI</div>
+                <p><strong>60km Mixtos:</strong> Incluye 3 intervalos de 3 minutos al 90% de esfuerzo.</p>
+            </div>
 
-| Día | CrossFit WOD | Hipertrofia | Bike |
-|:--|:--|:--|:--|
-| **LUN** | AMRAP 15' → DL / Box Jump / Push-ups | Pecho + Tríceps | Recovery |
-| **MAR** | Cindy Benchmark | Espalda + Bíceps | Recovery |
-| **MIÉ** | Recovery | Recovery | 🚵 Fondo +30km |
-| **JUE** | Thrusters + Burpees | Pierna | Soltar piernas |
-| **VIE** | EMOM 15' | Hombro + Brazos | Recovery |
-| **SÁB** | Recovery | Recovery | Ruta larga |
-| **DOM** | Full Rest | Full Rest | Recovery |
+            <!-- Domingo -->
+            <div class="day-card" style="border-left-color: #444;">
+                <div class="day-title">DOMINGO: REST & MOBILITY</div>
+                <p>20 min de movilidad de cadera y hombro. <a href="https://www.youtube.com/watch?v=GLy2re7m6u4" class="video-btn">VIDEO MOBILITY</a></p>
+            </div>
+        </div>
 
----
+        <!-- SEMANA 2 -->
+        <div id="w2" class="content-section">
+            <div class="day-card">
+                <div class="day-title">LUNES S2: PUSH (PROGRESSION)</div>
+                <div class="day-subtitle">Aumentar 2.5kg a lo hecho en S1</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row"><span>Bench Press: 5x8 @ 70%</span> <a href="https://www.youtube.com/watch?v=rT7DgIZnZps" class="video-btn">VIDEO</a></div>
+                </div>
+                <div class="wod-box">
+                    <strong>AMRAP 12':</strong><br>
+                    • 10 Bench Press (60kg)<br>
+                    • 10 Deadlifts (80kg)<br>
+                    • 10 Box Jump Overs
+                </div>
+            </div>
+            <!-- Martes S2 -->
+            <div class="day-card">
+                <div class="day-title">MARTES S2: PULL + GRIP</div>
+                <div class="wod-box">
+                    <strong>5 RONDAS FOR TIME:</strong><br>
+                    • 15 Pull-ups<br>
+                    • 15 KB Swings<br>
+                    • 200m Run
+                </div>
+            </div>
+             <!-- Miércoles S2 (Bici) -->
+             <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">MIÉRCOLES S2: BICI VAN RYSEL</div>
+                <p><strong>50km:</strong> Zona 2 + 5 sprints de 30 segundos.</p>
+            </div>
+            <!-- Jueves S2 -->
+            <div class="day-card">
+                <div class="day-title">JUEVES S2: FRONT SQUAT DAY</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row"><span>Front Squat: 4x8 @ 65%</span> <a href="https://www.youtube.com/watch?v=m4ytaCJZpl0" class="video-btn">VIDEO</a></div>
+                </div>
+                <div class="wod-box">
+                    <strong>EMOM 20':</strong><br>
+                    M1: 15 Wall Balls<br>
+                    M2: 15 Cal Bike/Row<br>
+                    M3: 10 Thrusters (40kg)<br>
+                    M4: Rest
+                </div>
+            </div>
+            <!-- Viernes S2 -->
+            <div class="day-card">
+                <div class="day-title">VIERNES S2: "DIANE" SCALE</div>
+                <div class="wod-box">
+                    21-15-9 de:<br>
+                    • Deadlift (100kg)<br>
+                    • Handstand Push-ups (o Push Press)
+                </div>
+            </div>
+            <!-- Sábado S2 -->
+            <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">SÁBADO S2: BICI LARGO</div>
+                <p><strong>75km:</strong> Ruta con desnivel positivo acumulado.</p>
+            </div>
+            <!-- Domingo S2 -->
+            <div class="day-card" style="border-left-color: #444;">
+                <div class="day-title">DOMINGO S2: TOTAL REST</div>
+            </div>
+        </div>
 
-## 🎬 WEEK 02 WODS
+        <!-- SEMANA 3 -->
+        <div id="w3" class="content-section">
+            <div class="day-card">
+                <div class="day-title">LUNES S3: MAX VOLUME</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row"><span>Bench Press: 5x5 @ 80%</span> <a href="https://www.youtube.com/watch?v=rT7DgIZnZps" class="video-btn">VIDEO</a></div>
+                </div>
+                <div class="wod-box">
+                    <strong>WOD "LINDA" (MOD):</strong> 10-9-8...1 de:<br>
+                    • Deadlift (1.5x BW)<br>
+                    • Bench Press (1x BW)<br>
+                    • Clean (0.75x BW)
+                </div>
+            </div>
+            <!-- Martes S3 -->
+            <div class="day-card">
+                <div class="day-title">MARTES S3: ENGINE PEAK</div>
+                <div class="wod-box">
+                    <strong>4 RONDAS:</strong><br>
+                    • 800m Run<br>
+                    • 30 Pull-ups<br>
+                    • 50 Air Squats
+                </div>
+            </div>
+             <!-- Miércoles S3 -->
+             <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">MIÉRCOLES S3: BICI ZONA 3</div>
+                <p><strong>40km:</strong> Tempo constante (Zona 3). No es paseo.</p>
+            </div>
+            <!-- Jueves S3 -->
+            <div class="day-card">
+                <div class="day-title">JUEVES S3: SQUAT PEAK</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row"><span>Back Squat: 5x3 @ 85%</span> <a href="https://www.youtube.com/watch?v=ultWZbUMPL8" class="video-link">VIDEO</a></div>
+                </div>
+                <div class="wod-box">
+                    <strong>AMRAP 20':</strong><br>
+                    • 20 Wall Balls<br>
+                    • 20 Toes to Bar<br>
+                    • 20 Box Jumps
+                </div>
+            </div>
+            <!-- Viernes S3 -->
+            <div class="day-card">
+                <div class="day-title">VIERNES S3: HALTERO POWER</div>
+                <div class="block">
+                    <span class="block-header">1. FUERZA</span>
+                    <div class="exercise-row"><span>Clean & Jerk: 10x1 @ 85%</span> <a href="https://www.youtube.com/watch?v=8miqQQJEsYI" class="video-btn">VIDEO</a></div>
+                </div>
+                <div class="wod-box">
+                    <strong>WOD "GRACE":</strong> 30 Clean & Jerks por tiempo (60kg).
+                </div>
+            </div>
+            <!-- Sábado S3 -->
+            <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">SÁBADO S3: BICI MONTAÑA / DESNIVEL</div>
+                <p><strong>80km:</strong> Máxima distancia del mes.</p>
+            </div>
+            <!-- Domingo S3 -->
+            <div class="day-card" style="border-left-color: #444;">
+                <div class="day-title">DOMINGO S3: REST & PREP</div>
+            </div>
+        </div>
 
-| WOD | Link |
-|:--|:--|
-| Deadlift Metcon | https://youtu.be/op9kVnSso6Q |
-| Cindy | https://youtu.be/eGo4IYlbE5g |
-| Thrusters | https://youtu.be/L219ltL15zk |
-| EMOM Core | https://youtu.be/76ZfW-Y_O9M |
+        <!-- SEMANA 4 -->
+        <div id="w4" class="content-section">
+            <div class="day-card" style="border-left-color: var(--warning);">
+                <div class="day-title">LUNES S4: TEST 1RM BENCH</div>
+                <p>Buscamos el máximo peso para 1 repetición.</p>
+                <div class="wod-box">AMRAP 7' Burpees. (Contabiliza cuántos haces).</div>
+            </div>
+            <div class="day-card" style="border-left-color: var(--warning);">
+                <div class="day-title">MARTES S4: TEST 1RM DEADLIFT</div>
+                <p>Calienta bien. Sube de 5 en 5kg hasta tu máximo.</p>
+            </div>
+            <div class="day-card" style="border-left-color: var(--success);">
+                <div class="day-title">MIÉRCOLES S4: BICI RECO</div>
+                <p><strong>20km Muy suaves:</strong> Solo para mover las piernas.</p>
+            </div>
+            <div class="day-card" style="border-left-color: var(--warning);">
+                <div class="day-title">JUEVES S4: TEST 1RM SQUAT</div>
+                <div class="wod-box">WOD "FRAN": 21-15-9 Thrusters + Pull-ups.</div>
+            </div>
+            <div class="day-card" style="border-left-color: var(--primary);">
+                <div class="day-title">VIERNES S4: MURPH (Opcional)</div>
+                <div class="wod-box">1 Mile Run + 100 Pullups + 200 Pushups + 300 Squats + 1 Mile Run.</div>
+            </div>
+            <div class="day-card">
+                <div class="day-title">SÁBADO S4: BICI TIME TRIAL</div>
+                <p><strong>10km:</strong> A tope. Mide tu tiempo final.</p>
+            </div>
+            <div class="day-card">
+                <div class="day-title">DOMINGO S4: CELEBRACIÓN / REST</div>
+            </div>
+        </div>
 
----
+        <!-- SUSTITUCIONES -->
+        <div id="subs" class="content-section">
+            <div class="day-card" style="border-left-color: var(--warning);">
+                <div class="day-title">GUÍA DE SUSTITUCIONES</div>
+                <p>Si no puedes hacer un ejercicio por falta de material o nivel, usa estos cambios:</p>
+                
+                <div class="block">
+                    <span class="block-header">TRACCIÓN (PULL)</span>
+                    <div class="exercise-row"><span>Pull-ups</span> ➔ <span>Ring Rows / Remo con mancuerna</span></div>
+                    <div class="exercise-row"><span>Muscle Ups</span> ➔ <span>Pull-up pesado + Fondo</span></div>
+                </div>
 
-# 📅 WEEK 03 — EXPLOSIVE
-### Objetivo → Potencia máxima y benchmark performance
+                <div class="block">
+                    <span class="block-header">EMPUJE (PUSH)</span>
+                    <div class="exercise-row"><span>Handstand Push-ups</span> ➔ <span>Press de hombro con mancuerna</span></div>
+                    <div class="exercise-row"><span>Bench Press</span> ➔ <span>Flexiones con peso (Weighted Push-ups)</span></div>
+                </div>
 
-| Día | CrossFit WOD | Hipertrofia | Bike |
-|:--|:--|:--|:--|
-| **LUN** | Grace Benchmark | Pecho + Tríceps | Muy suave |
-| **MAR** | Helen Benchmark | Espalda + Bíceps | Muy suave |
-| **MIÉ** | Recovery | Recovery | 🚵 Fondo +30km |
-| **JUE** | Chipper Infernal | Pierna | Muy suave |
-| **VIE** | Tabata Total | Hombro + Brazos | Muy suave |
-| **SÁB** | Recovery | Recovery | 🔥 Weekly Challenge |
-| **DOM** | Full Rest | Full Rest | Recovery |
+                <div class="block">
+                    <span class="block-header">HALTEROFILIA</span>
+                    <div class="exercise-row"><span>Power Clean</span> ➔ <span>KB Swing / Clean con mancuernas</span></div>
+                    <div class="exercise-row"><span>Thrusters</span> ➔ <span>Wall Balls / Goblet Squat</span></div>
+                </div>
 
----
+                <div class="block">
+                    <span class="block-header">CARDIO</span>
+                    <div class="exercise-row"><span>Run 400m</span> ➔ <span>500m Row / 1200m Bici / 2 min Comba</span></div>
+                    <div class="exercise-row"><span>Double Unders</span> ➔ <span>2x Single Unders (Saltos simples)</span></div>
+                </div>
 
-## 🎬 WEEK 03 WODS
+                <div class="sub-box">
+                    <strong>REGLA DE ORO:</strong> Si cambias un ejercicio, busca que trabaje el mismo músculo. Si es un ejercicio de saltar y no puedes, busca otro ejercicio explosivo de piernas.
+                </div>
+            </div>
+        </div>
 
-| WOD | Link |
-|:--|:--|
-| Grace | https://youtu.be/8miqQQJ6tcI |
-| Helen | https://youtu.be/sSESeQAn2rk |
-| Tabata | https://youtu.be/p7j02V1fIzU |
+    </div>
 
----
+    <script>
+        // --- NAVEGACION ---
+        function showTab(evt, tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            const btns = document.querySelectorAll('.nav-btn');
+            sections.forEach(s => s.classList.remove('active'));
+            btns.forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            window.scrollTo(0,0);
+        }
 
-# 🚴 VAN RYSEL AF — MAINTENANCE LOG
+        // --- RELOJ ---
+        let timer;
+        let seconds = 0;
+        let isRunning = false;
+        let mode = 'WOD';
+        let rounds = 1;
+        let status = 'READY';
 
-## Checklist mecánico
+        const dTime = document.getElementById('display-time');
+        const dMode = document.getElementById('c-mode');
+        const dRound = document.getElementById('c-round');
+        const dStatus = document.getElementById('c-status');
 
-- [ ] Limpieza y engrase de cadena cada 150km
-- [ ] Presión:
-  - 3.5 bar → Gravel mixto
-  - 4.0 bar → Asfalto
-- [ ] Revisar pastillas tras barro
-- [ ] Ajuste SRAM Apex 1x12
-- [ ] Inspección rápida antes de rutas largas
+        function setTimer(m) {
+            resetTimer();
+            mode = m;
+            dMode.innerText = mode + " MODE";
+            if(mode === 'TABATA') seconds = 20;
+            if(mode === 'EMOM') seconds = 60;
+            updateUI();
+        }
 
----
+        function updateUI() {
+            let mins = Math.floor(Math.abs(seconds) / 60);
+            let secs = Math.abs(seconds) % 60;
+            dTime.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            dRound.innerText = rounds.toString().padStart(2, '0');
+            dStatus.innerText = status;
+        }
 
-# 🧠 ATHLETE JOURNAL
+        function toggleTimer() {
+            if(isRunning) {
+                clearInterval(timer);
+                document.getElementById('start-btn').innerText = "START";
+                document.getElementById('start-btn').style.background = "var(--success)";
+            } else {
+                timer = setInterval(tick, 1000);
+                document.getElementById('start-btn').innerText = "STOP";
+                document.getElementById('start-btn').style.background = "var(--primary)";
+            }
+            isRunning = !isRunning;
+        }
 
-## Semana 01
-```txt
-Sensaciones:
--
--
--
-```
+        function tick() {
+            if(mode === 'WOD') {
+                seconds++;
+                status = "WORKING";
+            } else if(mode === 'EMOM') {
+                seconds--;
+                status = "COUNTDOWN";
+                if(seconds < 0) { seconds = 59; rounds++; }
+            } else if(mode === 'TABATA') {
+                seconds--;
+                if(seconds < 0) {
+                    if(status === 'WORK') { status = 'REST'; seconds = 10; dTime.style.color = "var(--primary)"; }
+                    else { status = 'WORK'; seconds = 20; rounds++; dTime.style.color = "var(--success)"; }
+                }
+            }
+            updateUI();
+        }
 
-## Semana 02
-```txt
-Sensaciones:
--
--
--
-```
-
-## Semana 03
-```txt
-Sensaciones:
--
--
--
-```
-
----
-
-# ⚡ PERFORMANCE RULES
-
-## 1. HIDRATACIÓN
-> 1g de sal por bidón cuando combines WOD + Gym + Bike.
-
----
-
-## 2. PRIORIDAD
-- WOD → intensidad
-- Gym → calidad técnica
-- Bike → resistencia y recuperación
-
----
-
-## 3. RECOVERY
-La Van Rysel no es para competir cada semáforo.
-
-Mantén:
-- pulso bajo,
-- respiración nasal,
-- cadencia constante.
-
----
-
-# 🔥 OBJECTIVES
-
-- Mejorar VO2
-- Aumentar fuerza relativa
-- Ganar masa magra
-- Mejorar recuperación
-- Mantener movilidad
-- Crear motor híbrido real
-
----
-
-<div align="center">
-
-# HYBRID ATHLETE MODE: ENABLED
-
-</div>
+        function resetTimer() {
+            clearInterval(timer);
+            seconds = 0; rounds = 1; isRunning = false; status = 'READY';
+            dTime.style.color = "var(--success)";
+            document.getElementById('start-btn').innerText = "START";
+            updateUI();
+        }
+    </script>
+</body>
+</html>
