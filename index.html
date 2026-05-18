@@ -3,392 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELITE HYBRID BIBLE - ELOY EDITION</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <title>HYBRID BIBLE - ELOY (2 WEEKS MAX DETAIL)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff0000; --secondary: #00f2ff; --success: #00ff66;
-            --bg: #080808; --card: #121212; --text: #ffffff;
-            --warning: #ffcc00; --danger: #ff4444;
+            --primary: #ff3300; --secondary: #00e5ff; --success: #39ff14;
+            --bg: #0a0a0a; --card: #141414; --text: #f0f0f0;
+            --warning: #ffcc00; --dark-border: #2a2a2a;
         }
 
         body {
             background-color: var(--bg); color: var(--text);
-            font-family: 'Inter', sans-serif; margin: 0; padding-bottom: 100px;
+            font-family: 'Roboto', sans-serif; margin: 0; padding-bottom: 100px;
         }
 
-        /* --- MASTER HEADER --- */
-        .master-header {
-            background: linear-gradient(180deg, #220000 0%, #080808 100%);
-            padding: 50px 20px; text-align: center; border-bottom: 3px solid var(--primary);
+        .header { background: linear-gradient(to bottom, #1a0000, var(--bg)); padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--primary); }
+        .header h1 { font-family: 'Oswald', sans-serif; font-size: 3rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); }
+        
+        .timer-bar {
+            position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.95);
+            padding: 15px; border-bottom: 1px solid var(--dark-border);
+            display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;
         }
-        .master-header h1 { font-family: 'Orbitron'; font-size: 3rem; margin: 0; letter-spacing: 5px; color: var(--primary); }
-        .master-header p { font-weight: 800; letter-spacing: 2px; color: var(--secondary); margin-top: 10px; }
+        #clock { font-family: 'Oswald'; font-size: 3rem; color: var(--success); text-shadow: 0 0 10px rgba(57,255,20,0.4); width: 150px; text-align: center; }
+        .btn-timer { background: #222; color: white; border: 1px solid #444; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .btn-go { background: var(--success) !important; color: black !important; border: none; }
+        .btn-stop { background: red !important; color: white !important; border: none; }
 
-        /* --- CROSSFIT TIMER ENGINE --- */
-        .sticky-timer {
-            position: sticky; top: 0; z-index: 9999; background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(10px); padding: 15px; border-bottom: 2px solid #333;
-            display: flex; justify-content: space-around; align-items: center;
-        }
-        #main-clock { font-family: 'Orbitron'; font-size: 3.5rem; color: var(--success); text-shadow: 0 0 20px rgba(0,255,102,0.3); }
-        .timer-info { text-align: center; font-family: 'Orbitron'; font-size: 0.8rem; }
-        .timer-btns button { 
-            background: #222; border: 1px solid #444; color: white; padding: 10px 15px; 
-            font-weight: 900; cursor: pointer; border-radius: 5px; margin: 2px;
-        }
-        .btn-go { background: var(--success) !important; color: black !important; }
+        .nav-tabs { display: flex; gap: 10px; padding: 20px; overflow-x: auto; background: #000; }
+        .tab { padding: 15px 30px; background: var(--card); border: 1px solid var(--dark-border); color: white; font-family: 'Oswald'; cursor: pointer; font-size: 1.2rem; }
+        .tab.active { border-color: var(--primary); background: #2a0000; color: var(--primary); }
 
-        /* --- NAV SYSTEM --- */
-        .week-nav {
-            display: flex; overflow-x: auto; gap: 10px; padding: 20px;
-            background: #000; border-bottom: 1px solid #222;
-        }
-        .week-btn {
-            flex: 0 0 auto; padding: 15px 30px; background: var(--card);
-            border: 2px solid #333; color: #666; font-family: 'Orbitron'; font-weight: 900;
-            cursor: pointer; transition: 0.3s;
-        }
-        .week-btn.active { border-color: var(--primary); color: var(--primary); background: #1a0000; }
-
-        /* --- CONTENT STRUCTURE --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .week-content { display: none; }
+        .week-content { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
         .week-content.active { display: block; }
 
-        .day-container {
-            background: var(--card); border-radius: 20px; padding: 40px;
-            margin-bottom: 60px; border-left: 8px solid var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
+        .day-card { background: var(--card); margin-bottom: 40px; border-radius: 10px; overflow: hidden; border: 1px solid var(--dark-border); }
+        .day-title { background: #111; padding: 20px; font-family: 'Oswald'; font-size: 2rem; color: white; border-bottom: 4px solid var(--primary); margin: 0; }
+        
+        .section-title { font-family: 'Oswald'; font-size: 1.5rem; padding: 15px 20px; background: #1a1a1a; color: var(--secondary); margin: 0; border-top: 1px solid var(--dark-border); }
+        
+        .exercise-grid { padding: 20px; display: grid; gap: 20px; }
+        .ex-item { background: #000; border: 1px solid var(--dark-border); padding: 20px; border-radius: 8px; position: relative; }
+        .ex-name { font-size: 1.3rem; font-weight: 900; margin-bottom: 15px; display: block; color: #fff; padding-right: 120px; }
+        .vid-btn { position: absolute; top: 20px; right: 20px; background: red; color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        
+        .ex-specs { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .spec-badge { background: #222; padding: 8px 12px; border-radius: 4px; font-size: 0.9rem; font-weight: bold; color: var(--warning); }
+        
+        .ex-tips { font-size: 0.9rem; color: #bbb; border-left: 3px solid var(--primary); padding-left: 10px; margin-bottom: 15px; line-height: 1.5; }
+        
+        textarea { width: 100%; background: #111; border: 1px solid #333; padding: 15px; color: var(--success); font-family: 'Roboto'; border-radius: 5px; resize: vertical; box-sizing: border-box; min-height: 80px; }
+        textarea:focus { outline: none; border-color: var(--primary); }
 
-        .section-header {
-            font-family: 'Orbitron'; font-size: 1.5rem; color: var(--secondary);
-            margin: 40px 0 20px 0; display: flex; align-items: center; gap: 15px;
-        }
-        .section-header::after { content: ""; flex: 1; height: 1px; background: #333; }
+        .wod-box { padding: 20px; background: repeating-linear-gradient(45deg, #0f0f0f, #0f0f0f 10px, #1a1a1a 10px, #1a1a1a 20px); border-top: 1px solid var(--dark-border); }
+        .wod-box h3 { color: var(--primary); font-family: 'Oswald'; font-size: 1.8rem; margin-top: 0; }
+        .wod-desc { font-size: 1.1rem; line-height: 1.6; }
 
-        /* --- EXERCISE CARD --- */
-        .ex-card {
-            background: #1a1a1a; border-radius: 12px; padding: 25px; margin-bottom: 20px;
-            border: 1px solid #252525; position: relative;
-        }
-        .ex-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 10px; display: block; }
-        .ex-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; margin-bottom: 15px; }
-        .meta-box { background: #000; padding: 10px; border-radius: 5px; text-align: center; }
-        .meta-box label { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; font-weight: 800; }
-        .meta-box span { color: var(--warning); font-weight: 900; font-size: 1rem; }
-
-        .video-link {
-            position: absolute; top: 25px; right: 25px;
-            background: #ff0000; color: white; text-decoration: none;
-            padding: 8px 15px; border-radius: 6px; font-size: 0.75rem; font-weight: 900;
-        }
-
-        .tips-box {
-            background: #0a0a0a; border-left: 4px solid var(--secondary);
-            padding: 15px; font-size: 0.9rem; color: #bbb; margin: 15px 0;
-        }
-
-        /* --- PERSISTENT DATA SYSTEM --- */
-        .logger { width: 100%; margin-top: 20px; }
-        .logger textarea {
-            width: 100%; background: #050505; border: 1px solid #333; color: var(--success);
-            padding: 15px; border-radius: 8px; font-family: 'Inter'; box-sizing: border-box;
-            resize: vertical; font-size: 0.95rem;
-        }
-
-        .wod-box {
-            background: linear-gradient(135deg, #000 0%, #150000 100%);
-            border: 2px dashed var(--primary); padding: 30px; border-radius: 15px;
-        }
-
-        .bike-card { border-left-color: var(--success); }
-
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        .working { animation: pulse 2s infinite; }
-
+        .bike-day { border-bottom-color: var(--success); }
+        .rest-day { border-bottom-color: #666; }
     </style>
 </head>
 <body>
 
-    <header class="master-header">
-        <h1>HYBRID BIBLE</h1>
-        <p>ELOY EDITION • 4-WEEK FULL SYSTEM</p>
-    </header>
+    <div class="header">
+        <h1>ELITE HYBRID: 14-DAY PROTOCOL</h1>
+        <p style="color:var(--secondary); font-weight:bold; letter-spacing:1px;">GYM (FUERZA) + WODS ESPECÍFICOS + VAN RYSEL</p>
+    </div>
 
-    <div class="sticky-timer">
-        <div class="timer-info">MODO: <br><span id="m-text" style="color:var(--primary)">WOD</span></div>
-        <div id="main-clock">00:00</div>
-        <div class="timer-info">RONDA: <br><span id="r-text" style="color:var(--secondary)">01</span></div>
-        <div class="timer-btns">
-            <button onclick="setMode('WOD')">WOD</button>
-            <button onclick="setMode('EMOM')">EMOM</button>
-            <button class="btn-go" id="ctrl" onclick="toggleClock()">START</button>
-            <button onclick="resetClock()">RESET</button>
+    <div class="timer-bar">
+        <div>
+            <span style="font-size:0.7rem; color:#aaa; font-family:'Oswald'">MODO:</span><br>
+            <select id="t-mode" style="background:#000; color:white; border:1px solid #444; padding:5px; font-family:'Oswald'">
+                <option value="up">FOR TIME (Cronómetro)</option>
+                <option value="emom">EMOM / AMRAP (Cuenta atrás 60s)</option>
+            </select>
+        </div>
+        <div id="clock">00:00</div>
+        <div>
+            <button class="btn-timer btn-go" id="btn-start" onclick="toggleT()">START</button>
+            <button class="btn-timer" onclick="resetT()">RESET</button>
         </div>
     </div>
 
-    <nav class="week-nav">
-        <button class="week-btn active" onclick="showWeek(event, 'w1')">SEMANA 1: ADAPTACIÓN</button>
-        <button class="week-btn" onclick="showWeek(event, 'w2')">SEMANA 2: HIPERTROFIA</button>
-        <button class="week-btn" onclick="showWeek(event, 'w3')">SEMANA 3: POTENCIA</button>
-        <button class="week-btn" onclick="showWeek(event, 'w4')">SEMANA 4: TEST & PEAK</button>
-    </nav>
+    <div class="nav-tabs">
+        <button class="tab active" onclick="switchTab(event, 'w1')">SEMANA 1: ESTABLECIMIENTO</button>
+        <button class="tab" onclick="switchTab(event, 'w2')">SEMANA 2: PROGRESIÓN DE CARGA</button>
+    </div>
 
-    <div class="container">
-        
-        <!-- SEMANA 1 -->
-        <section id="w1" class="week-content active">
+    <div id="w1" class="week-content active">
+
+        <div class="day-card">
+            <h2 class="day-title">LUNES: GYM (PECHO/TRÍCEPS) + PUSH WOD</h2>
             
-            <!-- LUNES S1 -->
-            <div class="day-container">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">LUNES: PUSH DAY (PECHO/HOMBRO)</h2>
-                <p style="color: var(--secondary); font-weight: 800;">ENFOQUE: Volumen de base y técnica en Clean.</p>
-
-                <div class="section-header">I. FUERZA E HIPERTROFIA DE EMPUJE</div>
-
-                <div class="ex-card">
-                    <span class="ex-title">Barbell Bench Press (Press de Banca Plano con Barra)</span>
-                    <a href="https://www.youtube.com/watch?v=rT7DgIZnZps" target="_blank" class="video-link">VÍDEO TÉCNICO</a>
-                    <div class="ex-meta">
-                        <div class="meta-box"><label>Series</label><span>4</span></div>
-                        <div class="meta-box"><label>Reps</label><span>10</span></div>
-                        <div class="meta-box"><label>Descanso</label><span>120s</span></div>
-                        <div class="meta-box"><label>RPE</label><span>8/10</span></div>
+            <h3 class="section-title">A. GYM / HIPERTROFIA</h3>
+            <div class="exercise-grid">
+                <div class="ex-item">
+                    <span class="ex-name">Press de Banca Plano con Barra</span>
+                    <a href="https://www.youtube.com/results?search_query=proper+form+bench+press+renaissance+periodization" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs">
+                        <span class="spec-badge">4 Series</span> <span class="spec-badge">8-10 Reps</span> <span class="spec-badge">RIR 2</span>
                     </div>
-                    <div class="tips-box">
-                        <b>TIPS DE ÉLITE:</b> Mantén los codos a 45 grados respecto al cuerpo. No dejes que la barra rebote en el esternón. Clava los talones en el suelo (Leg Drive) para mayor estabilidad.
-                    </div>
-                    <div class="logger">
-                        <textarea id="w1d1-ex1" placeholder="Registra tus pesos (Ej: 80kg - 85kg - 85kg...)"></textarea>
-                    </div>
+                    <div class="ex-tips">TIPS: Escápulas retraídas y deprimidas hacia el banco. Arco lumbar natural, pies anclados al suelo empujando hacia atrás (leg drive). La barra baja al esternón, no al cuello.</div>
+                    <textarea id="w1-d1-ex1" placeholder="Pesos levantados y sensaciones..."></textarea>
                 </div>
 
-                <div class="ex-card">
-                    <span class="ex-title">Dumbbell Overhead Press (Press Militar con Mancuernas)</span>
-                    <a href="https://www.youtube.com/watch?v=qEwKCR5JCog" target="_blank" class="video-link">VÍDEO TÉCNICO</a>
-                    <div class="ex-meta">
-                        <div class="meta-box"><label>Series</label><span>3</span></div>
-                        <div class="meta-box"><label>Reps</label><span>12</span></div>
-                        <div class="meta-box"><label>Descanso</label><span>90s</span></div>
+                <div class="ex-item">
+                    <span class="ex-name">Press Inclinado con Mancuernas (30-45º)</span>
+                    <a href="https://www.youtube.com/results?search_query=incline+dumbbell+press+hypertrophy" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs">
+                        <span class="spec-badge">3 Series</span> <span class="spec-badge">10-12 Reps</span> <span class="spec-badge">RIR 1</span>
                     </div>
-                    <div class="tips-box">
-                        <b>TIPS DE ÉLITE:</b> Evita arquear la espalda baja. Bloquea los brazos totalmente arriba, alineando las mancuernas con tus orejas.
-                    </div>
-                    <div class="logger">
-                        <textarea id="w1d1-ex2" placeholder="Notas de carga..."></textarea>
-                    </div>
+                    <div class="ex-tips">TIPS: Codos ligeramente metidos hacia dentro (45 grados) para no destrozar los manguitos rotadores. Rango de movimiento completo: estira bien el pecho abajo.</div>
+                    <textarea id="w1-d1-ex2" placeholder="Pesos levantados..."></textarea>
                 </div>
 
-                <div class="section-header">II. CONDITIONING & CROSSFIT</div>
+                <div class="ex-item">
+                    <span class="ex-name">Cruces en Polea Alta (Flys)</span>
+                    <a href="https://www.youtube.com/results?search_query=cable+crossovers+chest" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">15 Reps</span> <span class="spec-badge">RIR 0 (Fallo)</span></div>
+                    <div class="ex-tips">TIPS: No uses el torso para empujar. Imagina que vas a abrazar un árbol ancho. Aprieta el pecho 1 segundo en la contracción máxima.</div>
+                    <textarea id="w1-d1-ex3" placeholder="Pesos..."></textarea>
+                </div>
 
-                <div class="wod-box">
-                    <h3 style="color:var(--primary); font-family:'Orbitron'; font-size:1.8rem; margin:0;">WOD: "THE CHIEF"</h3>
-                    <p><b>FORMATO:</b> 5 Ciclos de AMRAP 3 minutos (Descansa 1 minuto entre ciclos).</p>
-                    <ul style="font-size: 1.2rem; font-weight: 700; line-height: 2;">
-                        <li>3 Power Cleans (60kg / 40kg) <a href="https://www.youtube.com/watch?v=KwYJTpQ_x5A" style="color:var(--secondary); font-size:0.7rem;">[VIDEO]</a></li>
-                        <li>6 Push-ups (Flexiones estrictas)</li>
-                        <li>9 Air Squats (Sentadillas romper el paralelo)</li>
+                <div class="ex-item">
+                    <span class="ex-name">Extensión de Tríceps en Polea (Cuerda) + Press Francés con Mancuernas (Superserie)</span>
+                    <a href="https://www.youtube.com/results?search_query=tricep+rope+pushdown+proper+form" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">12 + 12 Reps</span> <span class="spec-badge">RIR 0</span></div>
+                    <div class="ex-tips">TIPS: En la polea, abre la cuerda abajo del todo. En el press francés, codos apuntando al techo y no los muevas, solo flexiona el antebrazo.</div>
+                    <textarea id="w1-d1-ex4" placeholder="Pesos..."></textarea>
+                </div>
+            </div>
+
+            <h3 class="section-title">B. CROSSFIT / CONDITIONING METABÓLICO</h3>
+            <div class="wod-box">
+                <h3>WOD: "CHEST FIRE"</h3>
+                <div class="wod-desc">
+                    <p><strong>Formato:</strong> AMRAP de 12 Minutos (As Many Rounds As Possible).</p>
+                    <p>Aprovechando que el pecho y tríceps están pre-fatigados, vamos a buscar el fallo metabólico:</p>
+                    <ul>
+                        <li><strong>10 Hand Release Push-ups</strong> (Flexiones levantando las manos del suelo al bajar).</li>
+                        <li><strong>15 Dips en Cajón o Anillas</strong> (Fondos).</li>
+                        <li><strong>20 Dumbbell Snatches</strong> (10 por brazo, ligero/moderado para disparar el cardio).</li>
                     </ul>
-                    <div class="tips-box" style="border-color: var(--primary);">
-                        <b>ESTRATEGIA:</b> No sprintes en la primera ronda. El objetivo es mantener el mismo número de rondas en los 5 bloques. Es un entrenamiento de recuperación y consistencia.
-                    </div>
-                    <div class="logger">
-                        <textarea id="w1d1-wod" placeholder="Resultado (Ej: 3+5, 3+4, 3+4, 3+2, 3+1)"></textarea>
-                    </div>
+                    <p><em>TIP:</em> Rompe las series de flexiones pronto (ej: 5 y 5). Si vas al fallo muscular temprano, perderás mucho tiempo recuperando.</p>
+                </div>
+                <textarea id="w1-d1-wod" placeholder="Rondas totales + Reps extra (Ej: 5 rondas + 8 flexiones)"></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: var(--secondary);">MARTES: GYM (ESPALDA/BÍCEPS) + PULL WOD</h2>
+            
+            <h3 class="section-title">A. GYM / HIPERTROFIA</h3>
+            <div class="exercise-grid">
+                <div class="ex-item">
+                    <span class="ex-name">Dominadas Estrictas (Pronas)</span>
+                    <a href="https://www.youtube.com/results?search_query=strict+pull+up+technique" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">Al fallo -1</span> <span class="spec-badge">RIR 1</span></div>
+                    <div class="ex-tips">TIPS: Si haces más de 12, lastrate. Si no llegas a 6, usa goma. Inicia el movimiento deprimiendo escápulas (saca pecho hacia la barra).</div>
+                    <textarea id="w1-d2-ex1" placeholder="Reps o lastre usado..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Remo con Barra (Pendlay Row)</span>
+                    <a href="https://www.youtube.com/results?search_query=pendlay+row+form" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">8 Reps</span> <span class="spec-badge">RIR 2</span></div>
+                    <div class="ex-tips">TIPS: Espalda totalmente paralela al suelo. La barra reposa en el suelo en cada repetición. Tira explosivo hacia tu ombligo.</div>
+                    <textarea id="w1-d2-ex2" placeholder="Pesos levantados..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Jalón al Pecho Agarre Estrecho Neutro</span>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">12 Reps</span> <span class="spec-badge">RIR 1</span></div>
+                    <div class="ex-tips">TIPS: Aguanta la fase excéntrica (subida) 3 segundos. Máximo estiramiento de los dorsales arriba.</div>
+                    <textarea id="w1-d2-ex3" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Curl de Bíceps con Barra EZ + Curl Martillo DB (Superserie)</span>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">10 + 10 Reps</span> <span class="spec-badge">RIR 0</span></div>
+                    <div class="ex-tips">TIPS: Codos pegados a las costillas. No balancees el cuerpo (no uses momentum). En el martillo, enfócate en el braquial.</div>
+                    <textarea id="w1-d2-ex4" placeholder="Pesos..."></textarea>
                 </div>
             </div>
 
-            <!-- MARTES S1 -->
-            <div class="day-container" style="border-left-color: var(--secondary);">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">MARTES: PULL DAY (ESPALDA/BÍCEPS)</h2>
-                
-                <div class="section-header">I. FUERZA TRACCIÓN PESADA</div>
-                
-                <div class="ex-card">
-                    <span class="ex-title">Conventional Deadlift (Peso Muerto Convencional)</span>
-                    <a href="https://www.youtube.com/watch?v=op9kVnSso6Q" target="_blank" class="video-link">VÍDEO TÉCNICO</a>
-                    <div class="ex-meta">
-                        <div class="meta-box"><label>Series</label><span>3</span></div>
-                        <div class="meta-box"><label>Reps</label><span>5</span></div>
-                        <div class="meta-box"><label>RPE</label><span>7.5/10</span></div>
-                    </div>
-                    <div class="logger">
-                        <textarea id="w1d2-ex1" placeholder="Pesos del día..."></textarea>
-                    </div>
-                </div>
-
-                <div class="section-header">II. ENGINE WORK</div>
-                <div class="wod-box" style="border-color: var(--secondary);">
-                    <h3 style="color:var(--secondary); font-family:'Orbitron'; margin:0;">INTERVALOS DE REMO / CARRERA</h3>
-                    <p>8 Rondas de:</p>
-                    <ul style="font-weight: 700;">
-                        <li>500m Remo (o 400m Carrera)</li>
-                        <li>90 segundos de descanso total</li>
+            <h3 class="section-title">B. CROSSFIT / CONDITIONING METABÓLICO</h3>
+            <div class="wod-box">
+                <h3>WOD: "GRIP RIPPER"</h3>
+                <div class="wod-desc">
+                    <p><strong>Formato:</strong> 4 Rondas FOR TIME (Por tiempo). Límite: 15 mins.</p>
+                    <ul>
+                        <li><strong>400m Run</strong> o 500m Remo (Cardio puro).</li>
+                        <li><strong>21 Kettlebell Swings (Americanos - Hasta arriba)</strong> (24kg/16kg).</li>
+                        <li><strong>12 Pull-ups (Kipping o Mariposa permitidos aquí)</strong>.</li>
                     </ul>
-                    <p>Busca mantener el mismo "pace" (ritmo) en cada intervalo.</p>
-                    <textarea id="w1d2-wod" placeholder="Tiempos por ronda..."></textarea>
+                    <p><em>TIP:</em> Después del gym, tus antebrazos estarán fatigados. Cuidado con el agarre en las dominadas del WOD, usa magnesio o calleras.</p>
+                </div>
+                <textarea id="w1-d2-wod" placeholder="Tiempo de finalización..."></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title bike-day">MIÉRCOLES: BICI (VAN RYSEL) - ACTIVE RECOVERY</h2>
+            <div class="wod-box" style="border-top: none;">
+                <h3 style="color:var(--success)">ENDURANCE AERÓBICO</h3>
+                <div class="wod-desc">
+                    <p>Hoy no hay gimnasio. El cuerpo necesita limpiar lactato y construir base aeróbica para rendir en los WODs.</p>
+                    <ul>
+                        <li><strong>Distancia/Tiempo:</strong> 60 a 90 minutos de pedaleo constante.</li>
+                        <li><strong>Zona:</strong> ZONA 2 estricta (120-140 ppm aprox). Debes poder respirar por la nariz.</li>
+                        <li><strong>Terreno:</strong> Llano preferiblemente.</li>
+                    </ul>
+                    <p><em>TIP DE ÉLITE:</em> Mantén una cadencia alta (90 RPM). Esto transfiere directamente a la agilidad de piernas para la sentadilla de mañana y alarga la vida útil de tus rodillas.</p>
+                </div>
+                <textarea id="w1-d3-bike" placeholder="Kms hechos, velocidad media y ppm medias..."></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: #ff00ff;">JUEVES: GYM (PIERNA) + LOWER BODY WOD</h2>
+            
+            <h3 class="section-title">A. GYM / HIPERTROFIA Y FUERZA</h3>
+            <div class="exercise-grid">
+                <div class="ex-item">
+                    <span class="ex-name">Sentadilla Trasera (Back Squat)</span>
+                    <a href="https://www.youtube.com/results?search_query=squat+university+back+squat" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">6-8 Reps</span> <span class="spec-badge">RIR 2</span></div>
+                    <div class="ex-tips">TIPS: Rompe el paralelo siempre (cadera por debajo de la rodilla). Abre rodillas hacia afuera al subir para activar el glúteo. Core activado como si fueras a recibir un puñetazo.</div>
+                    <textarea id="w1-d4-ex1" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Peso Muerto Rumano (RDL) con Mancuernas o Barra</span>
+                    <a href="https://www.youtube.com/results?search_query=romanian+deadlift+proper+form" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">10 Reps</span> <span class="spec-badge">RIR 1.5</span></div>
+                    <div class="ex-tips">TIPS: No flexiones mucho las rodillas. El movimiento es empujar el culo hacia la pared de atrás hasta que sientas que los isquiotibiales se desgarran.</div>
+                    <textarea id="w1-d4-ex2" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Prensa de Piernas (Leg Press)</span>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">12-15 Reps</span> <span class="spec-badge">RIR 1</span></div>
+                    <div class="ex-tips">TIPS: Pies bajos y juntos en la plataforma = más cuádriceps. Pies altos y separados = más glúteo/isquio. Usa la posición de cuádriceps.</div>
+                    <textarea id="w1-d4-ex3" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Elevación de Gemelos de Pie</span>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">20 Reps</span> <span class="spec-badge">Fallo</span></div>
+                    <textarea id="w1-d4-ex4" placeholder="Pesos..."></textarea>
                 </div>
             </div>
 
-            <!-- MIÉRCOLES S1 -->
-            <div class="day-container bike-card">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">MIÉRCOLES: BICICLETA (ZONA 2)</h2>
-                <div class="wod-box" style="border-color: var(--success);">
-                    <p style="font-size: 1.2rem;"><b>OBJETIVO:</b> Construcción de base aeróbica con tu Van Rysel.</p>
-                    <p><b>SESIÓN:</b> 45-60km en terreno mayormente llano.</p>
-                    <p><b>INTENSIDAD:</b> Frecuencia cardíaca en Zona 2 (65-75% Máx). Debes poder mantener una conversación fluida sin jadear.</p>
-                    <div class="tips-box" style="border-color: var(--success);">
-                        <b>TIP:</b> Cadencia estable entre 85-95 RPM. Hidrátate cada 15 minutos aunque no tengas sed.
-                    </div>
-                    <textarea id="w1d3-bike" placeholder="Kms totales, velocidad media, sensaciones..."></textarea>
+            <h3 class="section-title">B. CROSSFIT / CONDITIONING METABÓLICO</h3>
+            <div class="wod-box">
+                <h3>WOD: "KAREN'S COUSIN"</h3>
+                <div class="wod-desc">
+                    <p><strong>Formato:</strong> FOR TIME (Límite 10 minutos).</p>
+                    <p>Tus piernas ya están ardiendo. Vamos a vaciar el glucógeno restante:</p>
+                    <ul>
+                        <li><strong>100 Wall Ball Shots (Balón Medicinal a la diana - 9kg)</strong></li>
+                    </ul>
+                    <p><em>*Penalización:*</em> Cada vez que pares a descansar, tienes que hacer <strong>5 Burpees</strong> antes de volver a tocar el balón.</p>
+                    <p><em>TIP:</em> Busca series manejables que te permitan no parar mucho. Ej: 20-20-15-15-10-10-10. Usa la extensión de cadera para lanzar el balón, no los brazos.</p>
+                </div>
+                <textarea id="w1-d4-wod" placeholder="Tiempo total y cuántas veces paraste..."></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: #ff9900;">VIERNES: GYM (HOMB/BIC/TRIC) + OVERHEAD WOD</h2>
+            
+            <h3 class="section-title">A. GYM / HIPERTROFIA</h3>
+            <div class="exercise-grid">
+                <div class="ex-item">
+                    <span class="ex-name">Press Militar Estricto con Barra (De pie)</span>
+                    <a href="https://www.youtube.com/results?search_query=strict+overhead+press+form" target="_blank" class="vid-btn">TÉCNICA</a>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">8 Reps</span> <span class="spec-badge">RIR 2</span></div>
+                    <div class="ex-tips">TIPS: Aprieta el culo a tope, esto estabiliza la zona lumbar. La barra viaja en línea recta; aparta la cara hacia atrás, no rodees la cabeza con la barra.</div>
+                    <textarea id="w1-d5-ex1" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Elevaciones Laterales con Mancuernas (Hombro Medio)</span>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">15-20 Reps</span> <span class="spec-badge">RIR 0 (Fallo)</span></div>
+                    <div class="ex-tips">TIPS: Piensa en alejar las mancuernas de tu cuerpo, no en subirlas. Pequeña inclinación hacia delante.</div>
+                    <textarea id="w1-d5-ex2" placeholder="Pesos..."></textarea>
+                </div>
+
+                <div class="ex-item">
+                    <span class="ex-name">Curl Predicador (Scott) + Tríceps Copa Mancuerna</span>
+                    <div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">12 + 12 Reps</span> <span class="spec-badge">RIR 1</span></div>
+                    <textarea id="w1-d5-ex3" placeholder="Pesos..."></textarea>
                 </div>
             </div>
 
-            <!-- JUEVES S1 -->
-            <div class="day-container">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">JUEVES: LEGS DAY (SENTADILLA)</h2>
-                <div class="ex-card">
-                    <span class="ex-title">High Bar Back Squat (Sentadilla Trasera)</span>
-                    <a href="https://www.youtube.com/watch?v=ultWZbUMPL8" target="_blank" class="video-link">VÍDEO TÉCNICO</a>
-                    <div class="ex-meta">
-                        <div class="meta-box"><label>Series</label><span>5</span></div>
-                        <div class="meta-box"><label>Reps</label><span>5</span></div>
-                        <div class="meta-box"><label>Descanso</label><span>180s</span></div>
-                    </div>
-                    <textarea id="w1d4-ex1" placeholder="Pesos..."></textarea>
+            <h3 class="section-title">B. CROSSFIT / CONDITIONING METABÓLICO</h3>
+            <div class="wod-box">
+                <h3>WOD: "SHOULDER BURNER"</h3>
+                <div class="wod-desc">
+                    <p><strong>Formato:</strong> 5 Rondas FOR TIME (Límite 12 min).</p>
+                    <ul>
+                        <li><strong>15 Push Press con barra o mancuernas</strong> (Pesado moderado, usa el impulso de las piernas).</li>
+                        <li><strong>30 Double Unders</strong> (Saltos dobles de comba. Si no te salen: 60 simples rápidos).</li>
+                    </ul>
+                    <p><em>TIP:</em> Relaja los hombros al saltar a la comba. Si los llevas tensos, el Push Press de la siguiente ronda será imposible.</p>
                 </div>
+                <textarea id="w1-d5-wod" placeholder="Tiempo final..."></textarea>
             </div>
+        </div>
 
-            <!-- VIERNES S1 -->
-            <div class="day-container">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">VIERNES: HALTERO & BENCHMARK</h2>
-                <div class="ex-card">
-                    <span class="ex-title">Clean & Jerk (Dos Tiempos)</span>
-                    <a href="https://www.youtube.com/watch?v=8miqQQJEsYI" target="_blank" class="video-link">VÍDEO TÉCNICO</a>
-                    <div class="ex-meta">
-                        <div class="meta-box"><label>Series</label><span>10</span></div>
-                        <div class="meta-box"><label>Reps</label><span>1 (EMOM)</span></div>
-                        <div class="meta-box"><label>Peso</label><span>75% RM</span></div>
-                    </div>
+        <div class="day-card">
+            <h2 class="day-title bike-day">SÁBADO: BICI (VAN RYSEL) - LONG RIDE / INTENSIDAD</h2>
+            <div class="wod-box" style="border-top: none;">
+                <h3 style="color:var(--success)">SALIDA HÍBRIDA ELITE</h3>
+                <div class="wod-desc">
+                    <p>Hoy toca vaciar el tanque. Entrenamiento de resistencia específica con picos de potencia.</p>
+                    <ul>
+                        <li><strong>Distancia/Tiempo:</strong> 70-100km (o 2.5 - 3.5 horas).</li>
+                        <li><strong>Estructura:</strong> 
+                            <br>- Primeros 60 min: Zona 2 (Calentamiento largo).
+                            <br>- Minuto 60 a 90: Realiza <strong>4 Sprints de 2 minutos</strong> en subida o con desarrollo duro (Zona 4/5), descansando 5 minutos entre cada uno.
+                            <br>- Vuelta a casa: Zona 2 constante.
+                        </li>
+                    </ul>
+                    <p><em>TIP NUTRICIÓN:</em> Obligatorio comer 40g-60g de carbohidratos (geles, plátano, dátiles) cada hora. Tu cuerpo viene de entrenar piernas el jueves, las reservas están tocadas.</p>
                 </div>
-                <div class="wod-box">
-                    <h3>WOD "ANNIE"</h3>
-                    <p>50-40-30-20-10 de:</p>
-                    <p>• Double Unders (Saltos dobles) <br> • Sit-ups (Abdominales)</p>
-                    <textarea id="w1d5-wod" placeholder="Tiempo final..."></textarea>
+                <textarea id="w1-d6-bike" placeholder="Ruta, distancia, desnivel y sufrimiento..."></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title rest-day">DOMINGO: DESCANSO ACTIVO TOTAL</h2>
+            <div class="wod-box" style="border-top: none; background: #111;">
+                <p style="font-size: 1.2rem;">No toques una pesa. No corras. No pedalees fuerte.</p>
+                <ul>
+                    <li>15-20 minutos de estiramientos profundos.</li>
+                    <li>Uso de Foam Roller en cuádriceps, dorsales y gemelos.</li>
+                    <li>Prepara los tápers para la semana 2.</li>
+                </ul>
+            </div>
+        </div>
+    </div> <div id="w2" class="week-content">
+        <div style="background:#2a0000; padding:20px; border-left:5px solid var(--primary); margin-bottom:30px;">
+            <h3 style="margin-top:0;">OBJETIVO SEMANA 2: SOBRECARGA PROGRESIVA</h3>
+            <p>El esquema es idéntico a la Semana 1 en cuanto a músculos trabajados. <strong>LA REGLA:</strong> Debes subir el peso levantado en el GYM entre 1.25kg y 2.5kg en todos los ejercicios principales, O hacer 1-2 repeticiones más con el mismo peso. Los WODs son variaciones más agresivas.</p>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title">LUNES: GYM (PECHO/TRÍCEPS) + PUSH WOD (HEAVY)</h2>
+            <h3 class="section-title">A. GYM (Mismos ejercicios, + PESO)</h3>
+            <div class="exercise-grid">
+                <div class="ex-item">
+                    <span class="ex-name">Press de Banca Plano con Barra</span>
+                    <div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">6-8 Reps (Sube peso)</span> <span class="spec-badge">RIR 1-2</span></div>
+                    <textarea id="w2-d1-ex1" placeholder="Pesos levantados..."></textarea>
                 </div>
+                <div class="ex-item"><span class="ex-name">Press Inclinado DB</span><div class="ex-specs"><span class="spec-badge">3 Series</span> <span class="spec-badge">10 Reps</span></div><textarea id="w2-d1-ex2"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Cruces en Polea</span><textarea id="w2-d1-ex3"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Extensión Tríceps + Press Francés</span><textarea id="w2-d1-ex4"></textarea></div>
             </div>
-
-            <!-- SÁBADO S1 -->
-            <div class="day-container bike-card">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron';">SÁBADO: FONDO EN BICI</h2>
-                <p><b>SESIÓN:</b> 70km - 80km con desnivel.</p>
-                <p>A mitad de ruta, incluye 3 series de 5 minutos en Zona 4 (Umbral).</p>
-                <textarea id="w1d6-bike" placeholder="Resumen de la ruta..."></textarea>
+            <h3 class="section-title">B. CROSSFIT / CONDITIONING METABÓLICO</h3>
+            <div class="wod-box">
+                <h3>WOD: "JT" (Adaptado)</h3>
+                <div class="wod-desc">
+                    <p><strong>Formato:</strong> 21-15-9 Repeticiones FOR TIME de:</p>
+                    <ul><li>Handstand Push-ups (HSPU) o Pike Push-ups si no dominas pino.</li><li>Ring Dips (Fondos en anillas).</li><li>Push-ups (Flexiones clásicas).</li></ul>
+                </div>
+                <textarea id="w2-d1-wod" placeholder="Tiempo total..."></textarea>
             </div>
+        </div>
 
-            <!-- DOMINGO S1 -->
-            <div class="day-container" style="border-left-color: #444;">
-                <h2 style="font-size: 2.5rem; margin: 0; font-family: 'Orbitron'; color: #888;">DOMINGO: REST & RECOVERY</h2>
-                <p>Cero impacto. Sesión de 20 min de estiramientos dinámicos.</p>
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: var(--secondary);">MARTES: GYM (ESPALDA/BÍCEPS) + PULL WOD (HEAVY)</h2>
+            <h3 class="section-title">A. GYM</h3>
+            <div class="exercise-grid">
+                <div class="ex-item"><span class="ex-name">Dominadas Lastradas</span><div class="ex-specs"><span class="spec-badge">4 Series</span> <span class="spec-badge">6-8 Reps</span></div><textarea id="w2-d2-ex1"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Remo con Barra (Sube peso)</span><textarea id="w2-d2-ex2"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Jalón al Pecho</span><textarea id="w2-d2-ex3"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Bíceps Barra EZ + Martillo</span><textarea id="w2-d2-ex4"></textarea></div>
             </div>
-
-        </section>
-
-        <!-- LAS SEMANAS 2, 3 Y 4 SIGUEN EL MISMO PATRÓN PERO CON PROGRESIÓN DE CARGAS -->
-        <section id="w2" class="week-content">
-            <div class="day-container">
-                <h2 style="font-family: 'Orbitron';">SEMANA 2: SOBRECARGA PROGRESIVA</h2>
-                <p>En esta semana, añade exactamente 2.5kg a 5kg a todos tus levantamientos de la Semana 1.</p>
-                <p><b>WOD CLAVE:</b> "LINDA" (The 3 bars of death). <br> 10-9-8...1 de Deadlift (1.5xBW), Bench Press (1xBW), Clean (0.75xBW).</p>
+            <h3 class="section-title">B. CROSSFIT</h3>
+            <div class="wod-box">
+                <h3>WOD: "HEAVY FRAN" (Versión Pull)</h3>
+                <div class="wod-desc"><p>15-12-9 Reps de:</p><ul><li>Deadlift (Peso Muerto pesado: 80kg-100kg).</li><li>Chest-to-Bar Pull-ups (Dominadas al pecho).</li></ul></div>
+                <textarea id="w2-d2-wod"></textarea>
             </div>
-        </section>
+        </div>
 
-        <section id="w3" class="week-content">
-            <div class="day-container">
-                <h2 style="font-family: 'Orbitron';">SEMANA 3: PICO DE INTENSIDAD</h2>
-                <p>Las repeticiones en Gym bajan a 6, pero el peso sube. Los WODs son cortos y explosivos.</p>
-                <p><b>WOD CLAVE:</b> "FRAN" (21-15-9 Thrusters / Pullups).</p>
-            </div>
-        </section>
+        <div class="day-card"><h2 class="day-title bike-day">MIÉRCOLES: BICI - RECUPERACIÓN ZONA 1-2</h2>
+            <div class="wod-box" style="border-top: none;"><p><strong>SESIÓN:</strong> 60 minutos, recuperación pura. No pases de 125 ppm. <br> <textarea id="w2-d3-bike" placeholder="Sensaciones..."></textarea></p></div>
+        </div>
 
-        <section id="w4" class="week-content">
-            <div class="day-container" style="border-left-color: var(--warning);">
-                <h2 style="font-family: 'Orbitron'; color: var(--warning);">SEMANA 4: TEST DE MÁXIMOS</h2>
-                <p>Lunes: Test 1RM Bench Press <br> Martes: Test 1RM Deadlift <br> Jueves: Test 1RM Back Squat <br> Viernes: WOD "MURPH".</p>
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: #ff00ff;">JUEVES: GYM (PIERNA) + LOWER BODY WOD</h2>
+            <h3 class="section-title">A. GYM</h3>
+            <div class="exercise-grid">
+                <div class="ex-item"><span class="ex-name">Sentadilla Trasera (Sube 2.5kg a 5kg)</span><textarea id="w2-d4-ex1"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Peso Muerto Rumano</span><textarea id="w2-d4-ex2"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Prensa de Piernas</span><textarea id="w2-d4-ex3"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Gemelos</span><textarea id="w2-d4-ex4"></textarea></div>
             </div>
-        </section>
+            <h3 class="section-title">B. CROSSFIT</h3>
+            <div class="wod-box">
+                <h3>WOD: "LEG DEMON"</h3>
+                <div class="wod-desc"><p>EMOM 12 Minutos:</p><ul><li>Minuto 1: 15 Box Jumps (Saltos al cajón).</li><li>Minuto 2: 15 Front Squats (Sentadilla Frontal ligera, 40-50kg).</li><li>Minuto 3: 20 Lunges saltando.</li><li>Minuto 4: Descanso. (Repetir 3 veces).</li></ul></div>
+                <textarea id="w2-d4-wod"></textarea>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <h2 class="day-title" style="border-color: #ff9900;">VIERNES: GYM (HOMB/BIC/TRIC) + WOD</h2>
+            <h3 class="section-title">A. GYM</h3>
+            <div class="exercise-grid">
+                <div class="ex-item"><span class="ex-name">Press Militar Estricto (Sube peso)</span><textarea id="w2-d5-ex1"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Elevaciones Laterales (Drop Set final)</span><textarea id="w2-d5-ex2"></textarea></div>
+                <div class="ex-item"><span class="ex-name">Bíceps + Tríceps (Cualquier máquina)</span><textarea id="w2-d5-ex3"></textarea></div>
+            </div>
+            <h3 class="section-title">B. CROSSFIT</h3>
+            <div class="wod-box">
+                <h3>WOD: "SHOULDER SMASH"</h3>
+                <div class="wod-desc"><p>AMRAP 10 Minutos:</p><ul><li>10 Thrusters (Barra vacía 20kg).</li><li>10 Kettlebell Snatches (5 por brazo).</li></ul></div>
+                <textarea id="w2-d5-wod"></textarea>
+            </div>
+        </div>
+
+        <div class="day-card"><h2 class="day-title bike-day">SÁBADO: BICI - RUTA DE UMBRAL</h2>
+            <div class="wod-box" style="border-top: none;"><p><strong>SESIÓN:</strong> 80km. Incluye 2x 20 minutos en SWEET SPOT (Justo por debajo de tu umbral, sintiendo que queman las piernas pero puedes mantenerlo). <br><textarea id="w2-d6-bike" placeholder="Rendimiento..."></textarea></p></div>
+        </div>
+        <div class="day-card"><h2 class="day-title rest-day">DOMINGO: REST DAY</h2><div class="wod-box" style="border-top:none;"><p>Descanso Total. Evaluamos la progresión de la quincena.</p></div></div>
 
     </div>
 
     <script>
-        // --- NAVIGATION ---
-        function showWeek(e, id) {
-            document.querySelectorAll('.week-content').forEach(w => w.classList.remove('active'));
-            document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            e.currentTarget.classList.add('active');
+        // --- SISTEMA DE PESTAÑAS ---
+        function switchTab(evt, tabId) {
+            document.querySelectorAll('.week-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // --- TIMER ENGINE ---
-        let clock, secs = 0, active = false, mode = 'WOD', round = 1;
-        const disp = document.getElementById('main-clock');
-        const mDisp = document.getElementById('m-text');
-        const rDisp = document.getElementById('r-text');
-
-        function setMode(m) {
-            resetClock(); mode = m;
-            mDisp.innerText = mode;
-            if(mode === 'EMOM') secs = 60;
-            updateUI();
-        }
-
-        function updateUI() {
-            let m = Math.floor(Math.abs(secs)/60), s = Math.abs(secs)%60;
-            disp.innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-            rDisp.innerText = round.toString().padStart(2,'0');
-        }
-
-        function toggleClock() {
-            const btn = document.getElementById('ctrl');
-            if(!active) {
-                clock = setInterval(() => {
-                    if(mode === 'WOD') secs++;
-                    else { secs--; if(secs < 0) { secs = 59; round++; } }
-                    updateUI();
-                }, 1000);
-                btn.innerText = "STOP"; btn.style.background = "var(--danger)";
-                disp.classList.add('working');
-            } else {
-                clearInterval(clock);
-                btn.innerText = "START"; btn.style.background = "var(--success)";
-                disp.classList.remove('working');
-            }
-            active = !active;
-        }
-
-        function resetClock() {
-            clearInterval(clock); secs = 0; round = 1; active = false;
-            document.getElementById('ctrl').innerText = "START";
-            document.getElementById('ctrl').style.background = "var(--success)";
-            disp.classList.remove('working');
-            updateUI();
-        }
-
-        // --- LOCAL STORAGE DATA SYSTEM ---
-        document.querySelectorAll('textarea').forEach(area => {
-            const id = area.id;
-            // Load saved data
-            if(localStorage.getItem(id)) { area.value = localStorage.getItem(id); }
-            // Save on change
-            area.addEventListener('input', () => {
-                localStorage.setItem(id, area.value);
-            });
+        // --- SISTEMA DE GUARDADO LOCAL STORAGE (MEMORIA INFINITA) ---
+        // Esto guarda automáticamente cada pulsación de tecla para que nunca pierdas tus pesos.
+        document.querySelectorAll('textarea').forEach(box => {
+            if(localStorage.getItem(box.id)) box.value = localStorage.getItem(box.id);
+            box.addEventListener('input', () => localStorage.setItem(box.id, box.value));
         });
 
+        // --- MOTOR DEL CRONÓMETRO DE CROSSFIT ---
+        let timerInt, seconds = 0, isRunning = false;
+        const clockEl = document.getElementById('clock');
+        
+        function updateClock() {
+            let m = Math.floor(Math.abs(seconds)/60);
+            let s = Math.abs(seconds)%60;
+            clockEl.innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+        }
+
+        function toggleT() {
+            const btn = document.getElementById('btn-start');
+            const mode = document.getElementById('t-mode').value;
+            
+            if(!isRunning) {
+                if(mode === 'emom' && seconds === 0) seconds = 60;
+                timerInt = setInterval(() => {
+                    if(mode === 'up') seconds++;
+                    else {
+                        seconds--;
+                        if(seconds <= 0) seconds = 60; // Reinicia el minuto para EMOM
+                    }
+                    updateClock();
+                }, 1000);
+                btn.innerText = "STOP"; btn.classList.remove('btn-go'); btn.classList.add('btn-stop');
+            } else {
+                clearInterval(timerInt);
+                btn.innerText = "START"; btn.classList.add('btn-go'); btn.classList.remove('btn-stop');
+            }
+            isRunning = !isRunning;
+        }
+
+        function resetT() {
+            clearInterval(timerInt); isRunning = false; seconds = 0;
+            const btn = document.getElementById('btn-start');
+            btn.innerText = "START"; btn.classList.add('btn-go'); btn.classList.remove('btn-stop');
+            updateClock();
+        }
     </script>
 </body>
 </html>
