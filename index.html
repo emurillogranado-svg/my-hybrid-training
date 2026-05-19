@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA HÍBRIDO ÉLITE: LA BIBLIA DEL RENDIMIENTO</title>
+    <title>SISTEMA HÍBRIDO ADAPTADO A GIMNASIO COMERCIAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -25,7 +25,6 @@
         header h1 { font-family: 'Oswald', sans-serif; font-size: 2.8rem; margin: 0; letter-spacing: 3px; color: var(--primary-neon); text-transform: uppercase; }
         header p { font-size: 1rem; color: var(--secondary-neon); font-weight: bold; letter-spacing: 1px; margin-top: 5px; }
 
-        /* --- CONTROL DE RELOJ DE CROSSFIT --- */
         .sticky-clock {
             position: sticky; top: 0; z-index: 999; background: rgba(5,5,5,0.95);
             backdrop-filter: blur(8px); padding: 15px 20px; border-bottom: 1px solid var(--border-color);
@@ -39,7 +38,6 @@
         .btn-start { background: var(--success-neon) !important; color: black !important; font-weight: bold; }
         .btn-stop { background: var(--primary-neon) !important; color: white !important; font-weight: bold; }
 
-        /* --- NAVEGACIÓN SEMANAL --- */
         .week-nav { display: flex; gap: 10px; padding: 20px; background: #000; overflow-x: auto; }
         .week-btn {
             flex: 1; min-width: 180px; padding: 15px; background: var(--card-bg);
@@ -52,7 +50,6 @@
         .week-section { display: none; }
         .week-section.active { display: block; }
 
-        /* --- BLOQUE DE DÍA --- */
         .day-block {
             background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color);
             margin-bottom: 50px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.7);
@@ -63,7 +60,6 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        /* --- FASES DEL ENTRENAMIENTO --- */
         .phase-title {
             background: #161616; padding: 12px 20px; font-family: 'Oswald'; font-size: 1.2rem;
             letter-spacing: 1px; display: flex; align-items: center; gap: 10px;
@@ -77,7 +73,6 @@
 
         .phase-body { padding: 20px; display: grid; gap: 15px; }
 
-        /* --- TARJETAS DE EJERCICIO --- */
         .exercise-row {
             background: var(--inner-card); border: 1px solid #1f1f1f; padding: 15px 20px;
             border-radius: 6px; position: relative;
@@ -86,15 +81,13 @@
         .ex-title-area { display: flex; align-items: center; gap: 10px; }
         .ex-title { font-size: 1.15rem; font-weight: 700; color: white; }
         .video-btn {
-            background: #ff0000; color: white; text-decoration: none; padding: 4px 10px;
+            background: #444; color: white; text-decoration: none; padding: 4px 10px;
             border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
         }
         .ex-metrics { display: flex; gap: 15px; margin: 10px 0; flex-wrap: wrap; }
         .metric-badge { background: #000; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; color: var(--warning-neon); font-weight: bold; }
         .ex-tips { font-size: 0.85rem; color: #b3b3b3; background: #090909; padding: 10px; border-left: 2px solid var(--secondary-neon); margin: 10px 0; }
         
-        /* --- CAMPOS DE ANOTACIÓN --- */
-        .log-input { width: 100%; margin-top: 10px; }
         textarea {
             width: 100%; background: #070707; border: 1px solid #222; color: var(--success-neon);
             padding: 10px; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.9rem;
@@ -102,7 +95,6 @@
         }
         textarea:focus { outline: none; border-color: var(--primary-neon); }
 
-        /* CHECKBOX PARA COMPLETADO */
         .check-box { width: 20px; height: 20px; cursor: pointer; accent-color: var(--success-neon); }
 
         .wod-box {
@@ -117,16 +109,16 @@
 <body>
 
     <header>
-        <h1>Eloy Hybrid Mastery</h1>
-        <p>PROGRAMACIÓN DE RENDIMIENTO ABSOLUTO • GYM COMPLEMENTARIO CONCORDANTE</p>
+        <h1>Eloy Hybrid Gym-Adapt</h1>
+        <p>ESTÍMULO CROSSFIT ADAPTADO A MAQUINARIA Y MANCUERNAS TRADICIONALES</p>
     </header>
 
     <div class="sticky-clock">
         <div>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-family:'Oswald';">CONFIGURAR TEMPORIZADOR:</span><br>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-family:'Oswald';">SELECTOR TIMER REVOLUCIONES:</span><br>
             <select id="clock-mode">
                 <option value="up">CRONÓMETRO (For Time / AMRAP)</option>
-                <option value="emom">EMOM (Bucle de cuenta atrás de 60s)</option>
+                <option value="emom">EMOM (Aviso cada 60 segundos)</option>
             </select>
         </div>
         <div id="clock">00:00</div>
@@ -137,8 +129,8 @@
     </div>
 
     <div class="week-nav">
-        <button class="week-btn active" onclick="changeWeek(event, 'week1')">SEMANA 1: ADAPTACIÓN E INTENSIDAD BASE</button>
-        <button class="week-btn" onclick="changeWeek(event, 'week2')">SEMANA 2: SOBRECARGA Y VOLUMEN SISTÉMICO</button>
+        <button class="week-btn active" onclick="changeWeek(event, 'week1')">SEMANA 1: ADAPTACIÓN EN GYM COMERCIAL</button>
+        <button class="week-btn" onclick="changeWeek(event, 'week2')">SEMANA 2: INTENSIFICACIÓN Y DOBLE CARGA</button>
     </div>
 
     <div class="container">
@@ -147,77 +139,74 @@
             
             <div class="day-block">
                 <div class="day-header">
-                    <span>LUNES: PUSH DAY INTEGRAL (PECHO Y TRÍCEPS)</span>
-                    <span style="font-size:1rem; color:var(--secondary-neon);">Fase CF antes de Gym</span>
+                    <span>LUNES: PUSH DAY HÍBRIDO (PECHO & TRÍCEPS)</span>
+                    <span style="font-size:1rem; color:var(--secondary-neon);">Fase CF sin material específico</span>
                 </div>
 
-                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR ESPECÍFICA (Hombro & Columna Torácica)</div>
+                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR (Hombro & Columna Torácica)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
                             <div class="ex-title-area">
                                 <input type="checkbox" class="check-box" id="w1d1-mob-chk">
-                                <span class="ex-title">Estiramiento Dinámico de Pectoral y Movilidad Escapular con Pica PVC</span>
+                                <span class="ex-title">Desbloqueo Torácico con Pica (o barra vacía) + Movilidad Escapular</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=pvc+shoulder+dislocations+proper+form" target="_blank" class="video-btn">Técnica</a>
+                            <a href="https://www.youtube.com/results?search_query=shoulder+dislocations+pvc" target="_blank" class="video-btn">Ver guía</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">Duración: 4 Minutos</span><span class="metric-badge">2 Series x 15 Pasadas</span></div>
-                        <div class="ex-tips">TIP: Mantén los brazos completamente rectos. Si notas mucha tensión, abre el agarre en la pica todo lo necesario. No fuerces las cervicales.</div>
-                        <textarea id="w1d1-mob-txt" placeholder="Notas de movilidad..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Minutos</span><span class="metric-badge">2 Series x 15 Pasadas</span></div>
+                        <textarea id="w1d1-mob-txt" placeholder="Notas de rango de movimiento..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-warmup">FASE 2: CALENTAMIENTO DINÁMICO & ACTIVACIÓN METABÓLICA</div>
+                <div class="phase-title phase-warmup">FASE 2: CALENTAMIENTO DINÁMICO & ACTIVACIÓN INTEGRAL</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d1-wm-chk">
-                                <span class="ex-title">Activación Concéntrica de Empuje</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d1-wm-chk">
+                            <span class="ex-title">Bloque de Activación Muscular sin impacto</span>
                         </div>
-                        <p style="margin:5px 0;">3 Rondas de flujo continuo sin descanso:</p>
+                        <p>3 Rondas seguidas:</p>
                         <ul>
-                            <li>10 Scapular Push-ups (Activación de serrato anterior)</li>
-                            <li>8 Flexiones estrictas con ritmo controlado</li>
-                            <li>30 Segundos de Plancha Isométrica sobre palmas</li>
+                            <li>10 Flexiones escapulares en suelo (Serrato)</li>
+                            <li>10 Flexiones normales controladas</li>
+                            <li>30s Plancha abdominal isométrica sobre codos</li>
                         </ul>
-                        <textarea id="w1d1-wm-txt" placeholder="Anotaciones de sensaciones térmicas..."></textarea>
+                        <textarea id="w1d1-wm-txt" placeholder="Notas de activación..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / FUERZA DE EMPUJE ALTA POTENCIA</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Fuerza Vertical con Mancuerna)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
                             <div class="ex-title-area">
                                 <input type="checkbox" class="check-box" id="w1d1-sk-chk">
-                                <span class="ex-title">Push Jerk (Envión de Empuje en Rack)</span>
+                                <span class="ex-title">Dumbbell Push Jerk (Envión de Potencia con Mancuernas)</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=how+to+push+jerk+crossfit" target="_blank" class="video-btn">Técnica</a>
+                            <a href="https://www.youtube.com/results?search_query=dumbbell+push+jerk+crossfit" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">5 Series x 3 Reps</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">Carga: Escalada técnica</span></div>
-                        <div class="ex-tips">TIP: Concéntrate en la recepción elástica. Métete debajo de la barra flexionando rodillas justo antes de bloquear los codos por encima de las orejas.</div>
-                        <textarea id="w1d1-sk-txt" placeholder="Registrar kilos por serie aquí..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">5 Series x 5 Reps</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">Uso de mancuernas pesadas</span></div>
+                        <div class="ex-tips">ADAPTACIÓN: Al no poder tirar la barra olímpica al suelo en un gimnasio normal, usamos dos mancuernas pesadas. Usa el impulso elástico de tus piernas (Dip-Drive) para lanzarlas hacia arriba y recíbelas flexionando ligeramente las rodillas.</div>
+                        <textarea id="w1d1-sk-txt" placeholder="Kilos de las mancuernas por serie..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD CONCORDANTE (Foco: Fatiga de Empuje)</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Metabólico en Zona de Mancuernas)</div>
                 <div class="phase-body">
                     <div class="wod-box">
-                        <h3>WOD: "CHEST FIRE"</h3>
-                        <p><strong>Formato: AMRAP de 12 Minutos</strong> (Máximas rondas posibles en el tiempo dado).</p>
+                        <h3>WOD: "DB CHEST BURNING"</h3>
+                        <p><strong>Formato: AMRAP de 12 Minutos</strong> (Pon el cronómetro de la app en modo ascendente).</p>
                         <ul style="font-weight: bold; font-size:1.1rem; color:white;">
-                            <li>10 Hand Release Push-ups (Flexiones levantando palmas en el suelo)</li>
-                            <li>15 Fondos en Cajón o Anillas (Dips)</li>
-                            <li>20 Alternating Dumbbell Snatches (Mancuerna de 22.5kg para cardio explosivo)</li>
+                            <li>12 Hand Release Push-ups (Flexiones despegando las manos del suelo abajo)</li>
+                            <li>12 Fondos en Paralelas Estrictos (Dips corporales en barras fijas de gimnasio)</li>
+                            <li>16 Alternating Dumbbell Snatches (Arrancada con mancuerna desde el suelo intercalando brazos)</li>
                         </ul>
-                        <div class="ex-tips" style="border-color:var(--primary-neon);">ESTRATEGIA: Tus tríceps y pecho van a arder rápido debido a los fondos. Fracciona las flexiones desde el principio en bloques de 5+5 para evitar el fallo muscular prematuro antes del minuto 6.</div>
-                        <textarea id="w1d1-wod-txt" placeholder="Resultado final del WOD (Rondas + Repeticiones sueltas)..."></textarea>
+                        <div class="ex-tips" style="border-color:var(--primary-neon);">ADAPTACIÓN: Sustituimos las anillas inestables por paralelas fijas normales o, en su defecto, los bordes de un banco plano de musculación, protegiendo tus hombros mientras mantienes la intensidad alta.</div>
+                        <textarea id="w1d1-wod-txt" placeholder="Resultado del WOD (Rondas logradas)..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-gym">FASE 5: GIMNASIO / HIPERTROFIA COMPLEMENTARIA (Pecho & Tríceps)</div>
+                <div class="phase-title phase-gym">FASE 5: GIMNASIO / HIPERTROFIA COMPLEMENTARIA (Pecho & Tríceps habitual)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
@@ -225,44 +214,35 @@
                                 <input type="checkbox" class="check-box" id="w1d1-g1-chk">
                                 <span class="ex-title">1. Press de Banca Plano con Barra Libre</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=bench+press+guide+renaissance+periodization" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8-10 Reps</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">RPE: 8/10</span></div>
-                        <div class="ex-tips">TIP: No rebotes la barra contra el esternón. Clava tus talones fuertemente al suelo (Leg Drive) para transferir fuerza e incrementar la estabilidad espinal.</div>
-                        <textarea id="w1d1-g1-txt" placeholder="Peso por serie (Ej: 80kg, 85kg, 85kg...)"></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8-10 Reps</span><span class="metric-badge">Descanso: 120s</span></div>
+                        <textarea id="w1d1-g1-txt" placeholder="Pesos de banca..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d1-g2-chk">
-                                <span class="ex-title">2. Press Inclinado con Mancuernas a 30 Grados</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d1-g2-chk">
+                            <span class="ex-title">2. Press Inclinado con Mancuernas a 30 Grados</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10-12 Reps</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">RPE: 8.5/10</span></div>
-                        <textarea id="w1d1-g2-txt" placeholder="Anotar pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10-12 Reps</span></div>
+                        <textarea id="w1d1-g2-txt" placeholder="Pesos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d1-g3-chk">
-                                <span class="ex-title">3. Cruces en Polea Alta (Flys para Aislamiento)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d1-g3-chk">
+                            <span class="ex-title">3. Cruces en Polea Alta (Aislamiento de pectoral)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">15 Reps</span><span class="metric-badge">Descanso: 60s</span><span class="metric-badge">RPE: 9/10</span></div>
-                        <textarea id="w1d1-g3-txt" placeholder="Carga en poleas..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">15 Reps</span></div>
+                        <textarea id="w1d1-g3-txt" placeholder="Placas..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d1-g4-chk">
-                                <span class="ex-title">4. SUPERSERIE: Extensión de Tríceps Polea (Cuerda) + Press Francés con Mancuerna</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d1-g4-chk">
+                            <span class="ex-title">4. SUPERSERIE: Extensión de Tríceps Polea (Cuerda) + Press Francés con Mancuernas</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps sin pausa intermedia</span><span class="metric-badge">Descanso: 90s al acabar ambas</span></div>
-                        <div class="ex-tips">TIP: En las poleas, abre los extremos de la cuerda al final de la fase concéntrica. En el press francés mantén los codos paralelos sin abrirlos.</div>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps</span></div>
                         <textarea id="w1d1-g4-txt" placeholder="Notas de la superserie..."></textarea>
                     </div>
                 </div>
@@ -270,19 +250,17 @@
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--secondary-neon);">
-                    <span>MARTES: PULL DAY INTEGRAL (ESPALDA Y BÍCEPS)</span>
+                    <span>MARTES: PULL DAY HÍBRIDO (ESPALDA & BÍCEPS)</span>
                 </div>
 
-                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR ESPECÍFICA (Muñecas, Dorsal & Cadera)</div>
+                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR (Muñecas, Dorsal & Cadera)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d2-mob-chk">
-                                <span class="ex-title">Estiramiento Dinámico de Dorsal de Rodillas en Suelo con Apoyo en Banco</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d2-mob-chk">
+                            <span class="ex-title">Estiramiento Dinámico de Dorsal en Banco + Rotaciones de Muñeca</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">Duración: 4 Minutos</span><span class="metric-badge">3 Series de 45 segundos aguantando estiramiento activo</span></div>
+                        <div class="ex-specs"><span class="metric-badge">4 Minutos</span></div>
                         <textarea id="w1d2-mob-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
@@ -292,93 +270,85 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w1d2-wm-chk">
-                            <span class="ex-title">Activación de Tracción Escapular</span>
+                            <span class="ex-title">Activación Controlada de Tracción en Barra</span>
                         </div>
-                        <p>3 Rondas estictas:</p>
+                        <p>3 Rondas lentas:</p>
                         <ul>
-                            <li>8 Kip Swings en barra (Controlados, activando dorsal y abdomen)</li>
-                            <li>10 Buenos Días con barra vacía o pica para despertar cadena posterior</li>
-                            <li>200 metros de Remo metabólico suave</li>
+                            <li>8 Tracciones escapulares colgado en barra fija (Sin doblar codos)</li>
+                            <li>10 Buenos Días con barra vacía (Despertar lumbar e isquios)</li>
+                            <li>200 metros de Remo en máquina de cardio (Si no hay, 1 min de elíptica rápido)</li>
                         </ul>
                         <textarea id="w1d2-wm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / HALTEROFILIA</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Cargada limpia sin lanzamiento)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
                             <div class="ex-title-area">
                                 <input type="checkbox" class="check-box" id="w1d2-sk-chk">
-                                <span class="ex-title">Power Clean (Cargada de Fuerza desde el Suelo)</span>
+                                <span class="ex-title">Dumbbell Power Clean (Cargada explosiva con Mancuernas)</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=how+to+power+clean+crossfit" target="_blank" class="video-btn">Técnica</a>
+                            <a href="https://www.youtube.com/results?search_query=dumbbell+power+clean" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">EMOM 8 Minutos</span><span class="metric-badge">Cada minuto ejecuta 2 repeticiones estables</span><span class="metric-badge">Carga: Constante al 75% de tu RM</span></div>
-                        <div class="ex-tips">TIP: Extiende la cadera de forma explosiva antes de tirar de los brazos. Mantén la barra pegada a tus muslos.</div>
-                        <textarea id="w1d2-sk-txt" placeholder="Registrar peso de trabajo..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">EMOM 8 Minutos</span><span class="metric-badge">Cada minuto: 4 Reps técnicas</span><span class="metric-badge">Carga: Mancuernas pesadas fijas</span></div>
+                        <div class="ex-tips">ADAPTACIÓN: Hacer un Power Clean con barra en suelo de tarima normal está prohibido porque no se puede soltar. Con dos mancuernas a los lados bajas hasta la mitad de la espinilla, tiras con fuerza de cadera y las llevas a los hombros con suavidad amortiguando el peso.</div>
+                        <textarea id="w1d2-sk-txt" placeholder="Peso de mancuernas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD CONCORDANTE (Foco: Tracción & Resistencia de Agarre)</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Resistencia de Agarre en Barra Fija)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--secondary-neon);">
-                        <h3>WOD: "GRIP RIPPER"</h3>
-                        <p><strong>Formato: 4 Rondas por tiempo</strong> (Límite máximo: 15 minutos).</p>
+                        <h3>WOD: "COMMERCIAL GRIP"</h3>
+                        <p><strong>Formato: 4 Rondas por tiempo</strong> (Límite estricto: 14 minutos).</p>
                         <ul>
-                            <li>500m Remo Errómetro (o 400m de Carrera continua)</li>
-                            <li>21 Kettlebell Swings Americanos (Hasta arriba - Peso sugerido 24kg)</li>
-                            <li>12 Pull-ups (Dominadas dinámicas con kipping si dominas la técnica)</li>
+                            <li>500m Remo en máquina cardiovascular (O 400m de Carrera en cinta a alta velocidad)</li>
+                            <li>20 Kettlebell Swings Americanos (O con mancuerna tradicional agarrando la cabeza si no hay KB)</li>
+                            <li>10 Dominadas Estrictas en Barra de Dominadas (O Jalón al pecho muy pesado si fallas en dominadas)</li>
                         </ul>
-                        <textarea id="w1d2-wod-txt" placeholder="Registrar tiempo total..."></textarea>
+                        <div class="ex-tips" style="border-color: var(--secondary-neon);">ADAPTACIÓN: En las estructuras de gimnasio normal no debes hacer Kipping (balanceo dinámico de CrossFit) porque la estructura se mueve. Ejecuta dominadas estrictas controlando la bajada o utiliza polea alta pesada.</div>
+                        <textarea id="w1d2-wod-txt" placeholder="Tiempo empleado..."></textarea>
                     </div>
                 </div>
 
                 <div class="phase-title phase-gym">FASE 5: GIMNASIO / HIPERTROFIA COMPLEMENTARIA (Espalda & Bíceps)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d2-g1-chk">
-                                <span class="ex-title">1. Dominadas Estrictas Pronas (Sin balanceo)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d2-g1-chk">
+                            <span class="ex-title">1. Dominadas Estrictas Pronas (Con o sin elástico de ayuda)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">Repeticiones: Al fallo - 1</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w1d2-g1-txt" placeholder="Número de repeticiones por serie logradas..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">Reps: Al fallo -1</span></div>
+                        <textarea id="w1d2-g1-txt" placeholder="Repeticiones..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d2-g2-chk">
-                                <span class="ex-title">2. Remo Pendlay con Barra (Tirón estricto desde el suelo)</span>
-                            </div>
-                            <a href="https://www.youtube.com/results?search_query=pendlay+row+proper+form" target="_blank" class="video-btn">Técnica</a>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d2-g2-chk">
+                            <span class="ex-title">2. Remo Pendlay con Barra (Apoyando y controlando la barra en el suelo)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8 Repeticiones</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">RPE: 8/10</span></div>
-                        <textarea id="w1d2-g2-txt" placeholder="Pesos levantados..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8 Reps</span></div>
+                        <textarea id="w1d2-g2-txt" placeholder="Kilos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d2-g3-chk">
-                                <span class="ex-title">3. Jalón al Pecho en Polea Alta con Agarre Neutro Estrecho</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d2-g3-chk">
+                            <span class="ex-title">3. Jalón al Pecho Agarre Neutro Cerrado</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 Reps</span><span class="metric-badge">Descanso: 60s</span></div>
-                        <textarea id="w1d2-g3-txt" placeholder="Pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 Reps</span></div>
+                        <textarea id="w1d2-g3-txt" placeholder="Placas..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d2-g4-chk">
-                                <span class="ex-title">4. SUPERSERIE: Curl de Bíceps con Barra EZ + Curl Martillo con Mancuerna alterno</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d2-g4-chk">
+                            <span class="ex-title">4. SUPERSERIE: Curl con Barra EZ + Curl Martillo con Mancuernas alterno</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 + 10 Reps continuas</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w1d2-g4-txt" placeholder="Pesos del bloque de brazos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 + 10 Reps</span></div>
+                        <textarea id="w1d2-g4-txt" placeholder="Notas de bíceps..."></textarea>
                     </div>
                 </div>
             </div>
@@ -387,36 +357,32 @@
                 <div class="day-header" style="border-bottom-color: var(--success-neon);">
                     <span>MIÉRCOLES: RESISTENCIA CARDIOVASCULAR ESPECÍFICA (VAN RYSEL)</span>
                 </div>
-                <div class="phase-title phase-bike">FASE ÚNICA: CAPACIDAD AERÓBICA Y ELIMINACIÓN DE LACTATO (ZONA 2)</div>
+                <div class="phase-title phase-bike">FASE ÚNICA: DESARROLLO DE BASE MITOCONDRIAL (ZONA 2)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--success-neon);">
-                        <p><strong>Objetivo de la sesión:</strong> Desarrollo de base mitocondrial sin impacto articular.</p>
-                        <p><strong>Protocolo:</strong> Pedaleo constante en carretera o rodillo durante <strong>60 a 90 minutos continuos</strong>.</p>
+                        <p><strong>Protocolo:</strong> Sesión de ciclismo continuo fuera del gimnasio (Carretera o rodillo) de <strong>60 a 90 minutos</strong>.</p>
                         <ul>
-                            <li><strong>Intensidad:</strong> Zona 2 estricta (entre el 65% y el 75% de tus Pulsaciones Máximas).</li>
-                            <li><strong>Métrica Clave:</strong> Mantener una cadencia constante entre <strong>85 y 95 RPM</strong>.</li>
+                            <li>Mantener la intensidad estable en Zona 2 (65%-75% de pulsaciones máximas).</li>
+                            <li>Cadencia óptima: entre 85 y 95 RPM.</li>
                         </ul>
-                        <div class="ex-tips" style="border-color: var(--success-neon);">TIP DE RENDIMIENTO: Es un entrenamiento regenerativo para limpiar el sistema. Debes poder respirar por la nariz de forma constante durante todo el trayecto. Evita repechos abruptos que te obliguen a entrar en zona anaeróbica.</div>
-                        <textarea id="w1d3-bike-txt" placeholder="Registrar Kilómetros totales, tiempo empleado, cadencia media y pulsaciones medias..."></textarea>
+                        <textarea id="w1d3-bike-txt" placeholder="Registrar kilómetros, tiempo y pulsaciones medias..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: #e500ff;">
-                    <span>JUEVES: LOWER BODY INTEGRAL (PIERNA)</span>
+                    <span>JUEVES: LOWER BODY HÍBRIDO (PIERNA INTEGRAL)</span>
                 </div>
 
-                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR ESPECÍFICA (Dorsiflexión de Tobillo & Cadera 90/90)</div>
+                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR (Dorsiflexión de Tobillo & Apertura de Cadera)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d4-mob-chk">
-                                <span class="ex-title">Liberación Miofascial de Tobillo con banda elástica + Movilidad 90/90 de Cadera</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d4-mob-chk">
+                            <span class="ex-title">Movilidad de Tobillo contra pared + Sentadilla profunda isométrica con pica</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">Duración: 5 Minutos</span><span class="metric-badge">2 Series x 10 rotaciones controladas por articulación</span></div>
+                        <div class="ex-specs"><span class="metric-badge">5 Minutos</span></div>
                         <textarea id="w1d4-mob-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
@@ -426,110 +392,100 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w1d4-wm-chk">
-                            <span class="ex-title">Activación del Reflejo Miotático de Piernas</span>
+                            <span class="ex-title">Activación del Tren Inferior</span>
                         </div>
                         <p>3 Rondas fluidas:</p>
                         <ul>
-                            <li>12 Air Squats (Sentadillas libres con pausa de 2 segundos en el fondo)</li>
-                            <li>10 Sentadillas Cosacas alternas (Estiramiento dinámico de aductores)</li>
-                            <li>15 Kettlebell Deadlifts con peso ligero de activación muscular</li>
+                            <li>12 Air Squats (Sentadillas libres rompiendo el paralelo de manera controlada)</li>
+                            <li>10 Sentadillas Cosacas (Zancadas laterales profundas alternas)</li>
+                            <li>15 Peso Muerto ligero con mancuernas para calentar isquiotibiales</li>
                         </ul>
-                        <textarea id="w1d4-wm-txt" placeholder="Notas..."></textarea>
+                        <textarea id="w1d4-warm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / FUERZA DE PIERNAS</div>
+                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL ADAPTADO (Fuerza de Sentadilla Frontal)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
                             <div class="ex-title-area">
                                 <input type="checkbox" class="check-box" id="w1d4-sk-chk">
-                                <span class="ex-title">Front Squat (Sentadilla Frontal tomada desde el Rack)</span>
+                                <span class="ex-title">Barbell Front Squat (Sentadilla Frontal tomada desde el Rack normal)</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=squat+university+front+squat" target="_blank" class="video-btn">Técnica</a>
+                            <a href="https://www.youtube.com/results?search_query=front+squat+rack+position" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series x 5 Repeticiones</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">Carga: RPE 8.5/10 constante</span></div>
-                        <div class="ex-tips">TIP: Mantén los codos apuntando hacia arriba y hacia adelante todo el tiempo para evitar que el torso se incline hacia adelante y sobrecargue la zona lumbar.</div>
-                        <textarea id="w1d4-sk-txt" placeholder="Registrar kilos de Sentadilla Frontal..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series x 5 Reps</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">Uso de Rack de gimnasio</span></div>
+                        <div class="ex-tips">NOTA TÉCNICA: Esto puedes hacerlo perfectamente en un gimnasio normal utilizando el rack de sentadillas estándar. Cruza los brazos sobre la barra si te falta flexibilidad en las muñecas para la postura olímpica.</div>
+                        <textarea id="w1d4-sk-txt" placeholder="Kilos de Sentadilla Frontal..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD CONCORDANTE (Foco: Capacidad de Potencia de Piernas)</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Quema metabólica en Rack)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: #e500ff;">
-                        <h3>WOD: "KAREN'S COUSIN"</h3>
-                        <p><strong>Formato: FOR TIME</strong> (Límite estricto de tiempo: 10 minutos).</p>
-                        <ul>
-                            <li><strong>100 Wall Ball Shots continuos</strong> (Balón medicinal de 9kg lanzado a diana de 3 metros).</li>
+                        <h3>WOD: "MANCUERNA THRUSTER ATTACK"</h3>
+                        <p><strong>Formato: FOR TIME</strong> (Finaliza lo antes posible - Límite de 10 minutos).</p>
+                        <ul style="font-weight: bold; font-size:1.1rem; color:white;">
+                            <li><strong>80 Dumbbell Thrusters Totales</strong> (Sentadilla profunda con dos mancuernas en los hombros enlazada con un press vertical al subir).</li>
                         </ul>
-                        <p><strong>Regla Especial de Penalización:</strong> Cada vez que sueltes el balón o dejes de hacer repeticiones, debes ejecutar inmediatamente <strong>5 Burpees integrales</strong> antes de volver a tocar la pelota.</p>
-                        <textarea id="w1d4-wod-txt" placeholder="Tiempo total de ejecución y número de penalizaciones cometidas..."></textarea>
+                        <p><strong>Penalización por parada:</strong> Cada vez que dejes las mancuernas en el suelo para descansar, realiza al instante <strong>5 Burpees integrales</strong> antes de volver a cargarlas.</p>
+                        <div class="ex-tips" style="border-color: #e500ff;">ADAPTACIÓN: Sustituimos los Wall Balls tradicionales (que estropean la pared del gimnasio) por Thrusters con mancuernas de peso ligero-moderado (Ej: 10kg-12.5kg por lado). El patrón muscular es idéntico y muy exigente.</div>
+                        <textarea id="w1d4-wod-txt" placeholder="Tiempo total y cantidad de paradas ejecutadas..."></textarea>
                     </div>
                 </div>
 
                 <div class="phase-title phase-gym">FASE 5: GIMNASIO / HIPERTROFIA COMPLEMENTARIA (Tren Inferior)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d4-g1-chk">
-                                <span class="ex-title">1. High Bar Back Squat (Sentadilla Trasera Barra Alta Profunda)</span>
-                            </div>
-                            <a href="https://www.youtube.com/results?search_query=high+bar+back+squat+form+squat+university" target="_blank" class="video-btn">Técnica</a>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d4-g1-chk">
+                            <span class="ex-title">1. High Bar Back Squat (Sentadilla Trasera Barra Alta Profunda)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6-8 Repeticiones</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">RPE: 8/10</span></div>
-                        <div class="ex-tips">TIP: Asegúrate de romper el paralelo en cada repetición de forma controlada. Empuja las rodillas hacia fuera al iniciar el ascenso.</div>
-                        <textarea id="w1d4-g1-txt" placeholder="Kilos anotados por serie..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6-8 Reps</span></div>
+                        <textarea id="w1d4-g1-txt" placeholder="Kilos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d4-g2-chk">
-                                <span class="ex-title">2. Peso Muerto Rumano con Barra (RDL - Énfasis en Isquios y Glúteos)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d4-g2-chk">
+                            <span class="ex-title">2. Peso Muerto Rumano con Barra (RDL - Tempo excéntrico 3s bajando)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 Repeticiones con tempo excéntrico de 3 segundos</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w1d4-g2-txt" placeholder="Pesos del RDL..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 Reps</span></div>
+                        <textarea id="w1d4-g2-txt" placeholder="Pesos RDL..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d4-g3-chk">
-                                <span class="ex-title">3. Prensa de Piernas de Disco de 45 Grados</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d4-g3-chk">
+                            <span class="ex-title">3. Prensa de Piernas Inclinada a 45 Grados</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12-15 Reps</span><span class="metric-badge">Descanso: 60s</span></div>
-                        <textarea id="w1d4-g3-txt" placeholder="Pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12-15 Reps</span></div>
+                        <textarea id="w1d4-g3-txt" placeholder="Kilos prensa..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d4-g4-chk">
-                                <span class="ex-title">4. Elevación de Gemelos de Pie en Máquina o Multipower</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d4-g4-chk">
+                            <span class="ex-title">4. Elevación de Gemelos de Pie en Máquina o Multipower</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">20 Repeticiones aguantando 1s la contracción</span><span class="metric-badge">Descanso: 45s</span></div>
-                        <textarea id="w1d4-g4-txt" placeholder="Anotar peso..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">20 Reps con pausa de 1s arriba</span></div>
+                        <textarea id="w1d4-g4-txt" placeholder="Pesos..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--warning-neon);">
-                    <span>VIERNES: HOMBRO, BÍCEPS Y TRÍCEPS INTEGRAL</span>
+                    <span>VIERNES: HOMBRO, BÍCEPS & TRÍCEPS INTEGRAL</span>
                 </div>
 
-                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR ESPECÍFICA (Cápsula Posterior del Hombro & Muñecas)</div>
+                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR (Hombros & Muñecas)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w1d5-mob-chk">
-                            <span class="ex-title">Estiramiento Dinámico "Sleeper Stretch" de hombro + Estiramiento de flexores de muñeca</span>
+                            <span class="ex-title">Sleeper Stretch dinámico en el suelo + Estiramiento de Flexores del Antebrazo</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">Duración: 4 Minutos</span></div>
                         <textarea id="w1d5-mob-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
@@ -539,43 +495,44 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w1d5-wm-chk">
-                            <span class="ex-title">Activación Óptima de Cintura Escapular</span>
+                            <span class="ex-title">Activación Óptima de la Cintura Escapular</span>
                         </div>
-                        <p>3 Rondas sin pausa:</p>
+                        <p>3 Rondas continuas:</p>
                         <ul>
-                            <li>5 Bear Crawls (Pasos de oso controlando la anteversión de la pelvis)</li>
-                            <li>10 Flexiones Hindúes (Activación tridimensional de hombros)</li>
-                            <li>40 Saltos Simples a la comba rápidos</li>
+                            <li>5 Pasos lentos de Caminata de Oso (Bear Crawl sin apoyar rodillas)</li>
+                            <li>10 Flexiones Hindúes (Movimiento tridimensional de hombros)</li>
+                            <li>45 Segundos de Jumping Jacks veloces (Sustituto de comba si no hay espacio)</li>
                         </ul>
                         <textarea id="w1d5-wm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / HALTEROFILIA OLÍMPICA</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Arrancada colgando con Mancuerna)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-meta-header">
                             <div class="ex-title-area">
                                 <input type="checkbox" class="check-box" id="w1d5-sk-chk">
-                                <span class="ex-title">Hang Power Snatch (Arrancada de Fuerza desde Colgada)</span>
+                                <span class="ex-title">Dumbbell Hang Power Snatch (Arrancada desde Colgada con Mancuerna)</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=how+to+hang+power+snatch+crossfit" target="_blank" class="video-btn">Técnica</a>
+                            <a href="https://www.youtube.com/results?search_query=dumbbell+hang+power+snatch" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">5 Series x 3 Repeticiones Técnicas</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">Carga: Peso moderado controlado (Foco en velocidad)</span></div>
-                        <textarea id="w1d5-sk-txt" placeholder="Registrar pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">5 Series x 3 Reps por brazo</span><span class="metric-badge">Descanso: 90s</span></div>
+                        <div class="ex-tips">ADAPTACIÓN: En vez de usar la barra olímpica de halterofilia, este ejercicio con una sola mancuerna pesada es perfecto para trabajar potencia unilateral sin destrozar el suelo del gimnasio comercial. Inicia el movimiento justo encima de la rodilla.</div>
+                        <textarea id="w1d5-sk-txt" placeholder="Pesos de mancuernas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD CONCORDANTE (Foco: Fatiga de Deltoides & Cardio)</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Hombro & Pulso Cardiorrespiratorio)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--warning-neon);">
-                        <h3>WOD: "SHOULDER BURNER"</h3>
-                        <p><strong>Formato: 5 Rondas por tiempo absoluto</strong> (Límite de tiempo: 12 minutos).</p>
+                        <h3>WOD: "SHOULDER COMMERCIAL BURN"</h3>
+                        <p><strong>Formato: 5 Rondas por tiempo absoluto</strong> (Límite máximo: 12 minutos).</p>
                         <ul>
-                            <li><strong>15 Push Press con Barra Olímpica</strong> (Carga sugerida: 40kg en total. Usa el empuje de tus piernas).</li>
-                            <li><strong>30 Double Unders</strong> (Saltos dobles de comba. Si no dominas el doble, realiza 60 simples hiper-explosivos).</li>
+                            <li><strong>12 Push Press con Barra</strong> (Toma la barra del rack o usa una barra fija pesada de la zona de peso libre. Impulsa ligeramente con piernas y bloquea arriba controlando la bajada al pecho).</li>
+                            <li><strong>50 Jumping Jacks fluidos</strong> (Sustitución de saltos dobles de comba para evitar golpear las máquinas colindantes).</li>
                         </ul>
-                        <textarea id="w1d5-wod-txt" placeholder="Tiempo empleado..."></textarea>
+                        <textarea id="w1d5-wod-txt" placeholder="Tiempo de las 5 rondas..."></textarea>
                     </div>
                 </div>
 
@@ -587,68 +544,51 @@
                                 <input type="checkbox" class="check-box" id="w1d5-g1-chk">
                                 <span class="ex-title">1. Press Militar Estricto con Barra de Pie (Overhead Press)</span>
                             </div>
-                            <a href="https://www.youtube.com/results?search_query=overhead+press+form+guide+renaissance+periodization" target="_blank" class="video-btn">Técnica</a>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8 Repeticiones</span><span class="metric-badge">Descanso: 90s</span><span class="metric-badge">RPE: 8/10</span></div>
-                        <div class="ex-tips">TIP: Glúteos y core compactos al 100%. No curves la espalda baja para compensar la carga pesada al subir la barra por encima de la cabeza.</div>
-                        <textarea id="w1d5-g1-txt" placeholder="Pesos del Press Militar..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">8 Reps</span><span class="metric-badge">Descanso: 90s</span></div>
+                        <textarea id="w1d5-g1-txt" placeholder="Kilos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d5-g2-chk">
-                                <span class="ex-title">2. Elevaciones Laterales con Mancuernas (Aislamiento de Cabeza Lateral)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d5-g2-chk">
+                            <span class="ex-title">2. Elevaciones Laterales con Mancuerna (Aislamiento lateral de deltoides)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">15-20 Repeticiones</span><span class="metric-badge">Descanso: 45s</span><span class="metric-badge">RPE: 9/10 (Cerca del fallo)</span></div>
-                        <textarea id="w1d5-g2-txt" placeholder="Pesos de mancuernas..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">15-20 Reps</span></div>
+                        <textarea id="w1d5-g2-txt" placeholder="Pesos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w1d5-g3-chk">
-                                <span class="ex-title">3. SUPERSERIE DE BRAZO: Curl de Bíceps en Banco Predicador (Barra EZ) + Extensión de Tríceps Copa a dos manos con Mancuerna</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w1d5-g3-chk">
+                            <span class="ex-title">3. SUPERSERIE DE BRAZO: Curl de Bíceps en Banco Predicador (Barra EZ) + Extensión de Tríceps Copa con Mancuerna a dos manos</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Repeticiones estrictas</span><span class="metric-badge">Descanso: 90s al completar ambas</span></div>
-                        <textarea id="w1d5-g3-txt" placeholder="Pesos de la superserie de brazos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps</span></div>
+                        <textarea id="w1d5-g3-txt" placeholder="Pesos de brazos..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--success-neon);">
-                    <span>SÁBADO: FONDO DE RESISTENCIA EN CARRETERA (VAN RYSEL)</span>
+                    <span>SÁBADO: FONDO EN CARRETERA (VAN RYSEL)</span>
                 </div>
                 <div class="phase-title phase-bike">FASE ÚNICA: FONDO LARGO E INTERVALOS DE UMBRAL (SWEET SPOT)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--success-neon);">
-                        <p><strong>Objetivo de la sesión:</strong> Aumentar el techo aeróbico y la eficiencia metabólica con fatiga acumulada de la semana.</p>
-                        <p><strong>Estructura del entrenamiento en ruta:</strong></p>
-                        <ul>
-                            <li><strong>Primeros 60 Minutos:</strong> Ritmo constante en Zona 2 base para calentar piernas.</li>
-                            <li><strong>Bloque Central:</strong> Ejecuta <strong>4 Intervalos de 2 Minutos en subida o desarrollo duro</strong> (Zona 4 avanzada / Umbral de potencia), descansando de forma pasiva 5 minutos en Zona 2 entre cada sprint.</li>
-                            <li><strong>Fase Final:</strong> Rodaje libre estable en Zona 2 hasta completar el kilometraje.</li>
-                        </ul>
-                        <div class="ex-tips" style="border-color: var(--success-neon);">TIP DE NUTRICIÓN ÉLITE: Consume de 40 a 60 gramos de carbohidratos de asimilación rápida (geles isotónicos, plátanos o dátiles) por cada hora de pedaleo. Tus reservas de glucógeno están bajas por los entrenamientos de la semana.</div>
-                        <textarea id="w1d6-bike-txt" placeholder="Detalles de la ruta: Kilometraje total obtenido, ganancia de desnivel (+m), tiempo de rodaje..."></textarea>
+                        <p><strong>Protocolo en exterior:</strong> 60 minutos iniciales en Zona 2 + 4 Intervalos de 2 minutos exigentes en subida (Zona 4), descansando 5 minutos rodando suave entre ellos.</p>
+                        <textarea id="w1d6-bike-txt" placeholder="Registrar Kms totales, desnivel acumulado y sensaciones de la sesión..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: #666;">
-                    <span>DOMINGO: DESCANSO ACTIVO TOTAL & DESCARGA DEL SNC</span>
+                    <span>DOMINGO: DESCANSO ACTIVO & REGENERACIÓN MUSCULAR</span>
                 </div>
                 <div class="phase-body">
-                    <p><strong>Protocolo obligatorio de regeneración neuromuscular:</strong> Cero entrenamientos mecánicos de impacto.</p>
-                    <ul>
-                        <li>15 Minutos de estiramientos estáticos profundos (Foco en psoas ilíaco, isquiotibiales y pectoral).</li>
-                        <li>Pases lentos con Foam Roller en la espalda alta, cuádriceps y gemelos para restaurar el tono elástico del tejido conectivo.</li>
-                    </ul>
-                    <textarea id="w1d7-rest-txt" placeholder="Notas sobre el estado de recuperación, calidad de sueño y balance muscular semanal..."></textarea>
+                    <p>Uso de Foam Roller en piernas y espalda, estiramientos pasivos prolongados y descanso de las articulaciones.</p>
+                    <textarea id="w1d7-rest-txt" placeholder="Estado de recuperación general..."></textarea>
                 </div>
             </div>
 
@@ -658,7 +598,7 @@
             
             <div class="day-block">
                 <div class="day-header">
-                    <span>LUNES (SEMANA 2): PUSH DAY INTEGRAL (SOBRECARGA MECÁNICA)</span>
+                    <span>LUNES (SEMANA 2): PUSH DAY HÍBRIDO (MÁXIMA INTENSIDAD)</span>
                     <span style="font-size:1rem; color:var(--primary-neon);">Semana 2</span>
                 </div>
 
@@ -667,105 +607,99 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d1-mob-chk">
-                            <span class="ex-title">Movilidad de Hombros y Rotación Interna con Pica PVC (Incrementar rango)</span>
+                            <span class="ex-title">Movilidad activa de hombro con pica (PVC) abriendo el rango articular</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">2 Series x 15 Reps</span></div>
                         <textarea id="w2d1-mob-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-warmup">FASE 2: CALENTAMIENTO DINÁMICO & ACTIVACIÓN METABÓLICA</div>
+                <div class="phase-title phase-warmup">FASE 2: CALENTAMIENTO DINÁMICO & ACTIVACIÓN</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d1-wm-chk">
-                            <span class="ex-title">Preparación del Manguito Rotador</span>
+                            <span class="ex-title">Activación Óptima de Tríceps y Pecho</span>
                         </div>
-                        <p>3 Rondas veloces:</p>
+                        <p>3 Rondas de preparación:</p>
                         <ul>
-                            <li>10 Flexiones en el suelo con ritmo 3-0-1 (3 segundos bajando bajada)</li>
-                            <li>12 Face Pulls con banda elástica ligera</li>
-                            <li>30s Isometría de empuje contra pared</li>
+                            <li>10 Flexiones en suelo con tempo excéntrico lento (3s bajando)</li>
+                            <li>12 Face Pulls con banda elástica o en polea de aislamiento ligera</li>
+                            <li>30s Plancha alta isométrica sobre las palmas de las manos</li>
                         </ul>
                         <textarea id="w2d1-wm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / FUERZA DE EMPUJE</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Fuerza Vertical Mancuerna Pesada)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d1-sk-chk">
-                                <span class="ex-title">Push Jerk (Buscar incremento de peso respecto a S1)</span>
-                            </div>
-                            <a href="https://www.youtube.com/results?search_query=how+to+push+jerk+crossfit" target="_blank" class="video-btn">Técnica</a>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d1-sk-chk">
+                            <span class="ex-title">Dumbbell Push Jerk (Buscar incremento de peso respecto a S1)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">5 Series x 2 Repeticiones (Menos reps, más carga)</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">Carga: Alrededor del 82% 1RM</span></div>
-                        <textarea id="w2d1-sk-txt" placeholder="Kilos de los Jerks de semana 2..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">5 Series x 3 Reps (Sube el peso de la mancuerna)</span><span class="metric-badge">Descanso: 120s</span></div>
+                        <textarea id="w2d1-sk-txt" placeholder="Pesos de mancuernas empleados en S2..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD COMPLEMENTARIO DE ALTA INTENSIDAD</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Gimnasio Estricto de Alta Densidad)</div>
                 <div class="phase-body">
                     <div class="wod-box">
-                        <h3>WOD: "JT ADAPTADO"</h3>
-                        <p><strong>Formato: Por Tiempo Directo (For Time)</strong> (Límite máximo de tiempo: 15 minutos).</p>
-                        <p>Esquema de repeticiones descendentes agresivas:</p>
+                        <h3>WOD: "JT ADAPTADO A GIMNASIO"</h3>
+                        <p><strong>Formato: Esquema descendente por tiempo (21 - 15 - 9 Reps)</strong></p>
                         <ul style="font-weight: bold; font-size:1.1rem; color:white;">
-                            <li>21 - 15 - 9 Repeticiones de Handstand Push-ups (Flexiones de pino contra pared o Pike Push-ups en cajón)</li>
-                            <li>21 - 15 - 9 Repeticiones de Ring Dips (Fondos estrictos en anillas o paralelas)</li>
-                            <li>21 - 15 - 9 Repeticiones de Flexiones estrictas en suelo</li>
+                            <li>Pike Push-ups con pies apoyados sobre un banco plano de gimnasio (Variante excelente de HSPU)</li>
+                            <li>Fondos en Paralelas Estrictas o Fondos entre dos Bancos planos</li>
+                            <li>Flexiones estrictas clásicas en el suelo con bloqueo total arriba</li>
                         </ul>
-                        <textarea id="w2d1-wod-txt" placeholder="Tiempo total para finalizar el JT..."></textarea>
+                        <div class="ex-tips">ADAPTACIÓN: El WOD original "JT" de CrossFit usa flexiones de pino en pared y fondos en anillas. Esta adaptación en banco plano y barras paralelas te da exactamente el mismo volumen mecánico protegiendo la infraestructura del gimnasio.</div>
+                        <textarea id="w2d1-wod-txt" placeholder="Tiempo total para acabar el JT adaptado..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-gym">FASE 5: GIMNASIO / SOBRECARGA PROGRESIVA COMPLEMENTARIA (Pecho & Tríceps)</div>
+                <div class="phase-title phase-gym">FASE 5: GIMNASIO / SOBRECARGA PROGRESIVA (Pecho & Tríceps)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d1-g1-chk">
-                                <span class="ex-title">1. Press de Banca Plano con Barra (Objetivo: Añadir 2.5kg a S1)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d1-g1-chk">
+                            <span class="ex-title">1. Press de Banca Plano con Barra Libre (Intentar +2.5kg vs S1)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6-8 Reps (Bajan reps para subir peso)</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">RPE: 8.5/10</span></div>
-                        <textarea id="w2d1-g1-txt" placeholder="Anotar kilajes exactos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6-8 Reps</span></div>
+                        <textarea id="w2d1-g1-txt" placeholder="Pesos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d1-g2-chk">
-                            <span class="ex-title">2. Press Inclinado con Mancuernas (30 Grados)</span>
+                            <span class="ex-title">2. Press Inclinado con Mancuernas a 30 Grados</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">8-10 Reps</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w2d1-g2-txt" placeholder="Anotar pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">8-10 Reps</span></div>
+                        <textarea id="w2d1-g2-txt" placeholder="Pesos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d1-g3-chk">
-                            <span class="ex-title">3. Cruces en Polea Alta (Variar altura a polea media)</span>
+                            <span class="ex-title">3. Cruces en Polea Media-Alta con parada isométrica de 1s al cerrar</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 Repeticiones controladas con pausa abajo</span></div>
-                        <textarea id="w2d1-g3-txt" placeholder="Pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 Reps</span></div>
+                        <textarea id="w2d1-g3-txt" placeholder="Placas..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d1-g4-chk">
-                            <span class="ex-title">4. SUPERSERIE: Extensión en Polea Alta + Press Francés con Barra EZ</span>
+                            <span class="ex-title">4. SUPERSERIE: Extensión en Polea con Cuerda + Press Francés con Barra EZ</span>
                         </div>
                         <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 10 Reps</span></div>
-                        <textarea id="w2d1-g4-txt" placeholder="Pesos..."></textarea>
+                        <textarea id="w2d1-g4-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--secondary-neon);">
-                    <span>MARTES (SEMANA 2): PULL DAY INTEGRAL (CADENA POSTERIOR ÉLITE)</span>
+                    <span>MARTES (SEMANA 2): PULL DAY HÍBRIDO (TRACCIÓN POTENTE)</span>
                 </div>
 
                 <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR</div>
@@ -773,7 +707,7 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-mob-chk">
-                            <span class="ex-title">Estiramientos de la Cadena Posterior Fascial</span>
+                            <span class="ex-title">Estiramientos dinámicos de la cadena posterior completa y lumbar</span>
                         </div>
                         <textarea id="w2d2-mob-txt" placeholder="Notas..."></textarea>
                     </div>
@@ -784,42 +718,40 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-wm-chk">
-                            <span class="ex-title">Activación Dinámica de Tracción</span>
+                            <span class="ex-title">Activación Neuromuscular de Tracción</span>
                         </div>
-                        <p>3 Rondas:</p>
+                        <p>3 Rondas controladas:</p>
                         <ul>
-                            <li>6 Scapular Pull-ups estrictas</li>
-                            <li>8 Remo invertido en anillas (Ring Rows)</li>
-                            <li>15 Buenos Días con pica</li>
+                            <li>6 Dominadas supinas estrictas lentas</li>
+                            <li>10 Buenos Días con barra vacía cuidando la bisagra de cadera</li>
+                            <li>15 Pájaros con mancuernas ligeras (Deltoides posterior)</li>
                         </ul>
                         <textarea id="w2d2-wm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / HALTEROFILIA</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Cargadas con Mancuerna Pesada)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d2-sk-chk">
-                                <span class="ex-title">Power Clean (Cargadas de Fuerza continuas)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d2-sk-chk">
+                            <span class="ex-title">Dumbbell Power Clean (Incremento de Sobrecarga)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">EMOM 10 Minutos</span><span class="metric-badge">Cada minuto ejecuta 1 repetición pesada estable</span><span class="metric-badge">Carga: Sube al 80% de tu 1RM</span></div>
-                        <textarea id="w2d2-sk-txt" placeholder="Registrar pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">EMOM 10 Minutos</span><span class="metric-badge">Cada minuto ejecutas 3 Reps pesadas estables</span></div>
+                        <textarea id="w2d2-sk-txt" placeholder="Mancuerna kilos en S2..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD CONCORDANTE (Foco: Tracción & Potencia)</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Fuerza Espinal & Tracción en Polea)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--secondary-neon);">
-                        <h3>WOD: "HEAVY FRAN VARIATION"</h3>
-                        <p><strong>Formato: 15 - 12 - 9 Repeticiones por tiempo absoluto</strong></p>
+                        <h3>WOD: "HEAVY COMMERCIAL FRAN"</h3>
+                        <p><strong>Formato: Esquema por tiempo 15 - 12 - 9 Repeticiones</strong></p>
                         <ul>
-                            <li>Deadlifts pesados con barra (Carga sugerida: Entre 80kg y 100kg según tu RM actual)</li>
-                            <li>Chest-to-Bar Pull-ups (Dominadas dinámicas donde el pecho impacte la barra)</li>
+                            <li>Peso Muerto con barra tradicional en zona de peso libre (Controlando el apoyo, sin soltarla)</li>
+                            <li>Jalón al pecho en máquina muy pesado (Sustituto de dominadas de pecho a la barra con balanceo para no mover la jaula del gym)</li>
                         </ul>
-                        <textarea id="w2d2-wod-txt" placeholder="Registrar tiempo final obtenido..."></textarea>
+                        <textarea id="w2d2-wod-txt" placeholder="Tiempo empleado..."></textarea>
                     </div>
                 </div>
 
@@ -828,34 +760,34 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-g1-chk">
-                            <span class="ex-title">1. Dominadas Estrictas Lastradas (Usa cinturón o mancuerna en pies)</span>
+                            <span class="ex-title">1. Dominadas Estrictas Lastradas (Usa cinturón de lastre o mancuerna en pies)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Repeticiones con lastre</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w2d2-g1-txt" placeholder="Kilos de lastre y reps..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Reps con lastre estable</span></div>
+                        <textarea id="w2d2-g1-txt" placeholder="Kilos lastre..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-g2-chk">
-                            <span class="ex-title">2. Remo Pendlay Estricto con Barra (Mantener torso inmóvil)</span>
+                            <span class="ex-title">2. Remo Pendlay Estricto con Barra Libre (Incremento de carga)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Reps (Incrementando peso con respecto a S1)</span></div>
-                        <textarea id="w2d2-g2-txt" placeholder="Pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Reps</span></div>
+                        <textarea id="w2d2-g2-txt" placeholder="Kilos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-g3-chk">
-                            <span class="ex-title">3. Jalón al Pecho en Polea Alta con Agarre Prono Ancho</span>
+                            <span class="ex-title">3. Jalón al Pecho en Polea con Agarre Prono Ancho tradicional</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 Reps pesadas</span></div>
-                        <textarea id="w2d2-g3-txt" placeholder="Pesos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">10 Reps controlando la excéntrica</span></div>
+                        <textarea id="w2d2-g3-txt" placeholder="Placas..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d2-g4-chk">
-                            <span class="ex-title">4. SUPERSERIE DE BRAZOS: Curl con Mancuernas Supinando + Curl Invertido con Barra EZ</span>
+                            <span class="ex-title">4. SUPERSERIE DE BRAZO: Curl con Mancuerna Supinando + Curl Invertido con Barra EZ</span>
                         </div>
                         <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps</span></div>
                         <textarea id="w2d2-g4-txt" placeholder="Pesos..."></textarea>
@@ -870,19 +802,15 @@
                 <div class="phase-title phase-bike">FASE ÚNICA: CAPACIDAD AERÓBICA EN LA VAN RYSEL</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--success-neon);">
-                        <p><strong>Protocolo:</strong> Rodaje de recuperación controlada durante <strong>60 Minutos exactos</strong>.</p>
-                        <ul>
-                            <li>Mantener de forma estricta la Zona 1 avanzada y Zona 2 inicial (Pulsaciones muy controladas).</li>
-                            <li>Cadencia ideal constante: 90 RPM.</li>
-                        </ul>
-                        <textarea id="w2d3-bike-txt" placeholder="Registrar Kms, sensaciones generales de fatiga de piernas..."></textarea>
+                        <p><strong>Protocolo:</strong> Rodaje regenerativo controlado fuera del gimnasio durante <strong>60 Minutos exactos</strong> en Zona 1 avanzada o Zona 2 baja. Mantén una cadencia alta de 90 RPM.</p>
+                        <textarea id="w2d3-bike-txt" placeholder="Registrar kilómetros y sensaciones de fatiga..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: #e500ff;">
-                    <span>JUEVES (SEMANA 2): LOWER BODY INTEGRAL (MÁXIMA SOBRECARGA)</span>
+                    <span>JUEVES (SEMANA 2): LOWER BODY HÍBRIDO (SOBRECARGA GENERAL)</span>
                 </div>
 
                 <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR BAJA</div>
@@ -890,7 +818,7 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d4-mob-chk">
-                            <span class="ex-title">Movilidad articular profunda de cadera, tobillo y flexores de rodilla</span>
+                            <span class="ex-title">Apertura profunda de cadera, aductores y estiramiento dinámico de sóleo</span>
                         </div>
                         <textarea id="w2d4-mob-txt" placeholder="Notas..."></textarea>
                     </div>
@@ -901,66 +829,62 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d4-wm-chk">
-                            <span class="ex-title">Activación Neuromuscular Excéntrica</span>
+                            <span class="ex-title">Activación Neuromuscular Excéntrica de Piernas</span>
                         </div>
                         <p>3 Rondas de preparación:</p>
                         <ul>
-                            <li>10 Sentadillas con salto vertical explosivo</li>
-                            <li>12 Zancadas inversas dinámicas con peso corporal</li>
-                            <li>20 Segundos de Wall Sit Isométrico contra la pared</li>
+                            <li>10 Sentadillas con salto vertical libre explosivo</li>
+                            <li>12 Zancadas inversas con peso corporal controlando el equilibrio</li>
+                            <li>20s Wall Sit Isométrico apoyando la espalda en la pared</li>
                         </ul>
                         <textarea id="w2d4-wm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / FUERZA DE PIERNAS</div>
+                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL (Fuerza de Sentadilla Frontal)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d4-sk-chk">
-                                <span class="ex-title">Front Squat (Sentadilla Frontal tomada de Rack pesado)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d4-sk-chk">
+                            <span class="ex-title">Barbell Front Squat (Rack de Sentadillas - Máxima carga estable)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series x 3 Repeticiones (Incrementar carga respecto a S1)</span><span class="metric-badge">Descanso: 120s</span><span class="metric-badge">RPE: 9/10</span></div>
-                        <textarea id="w2d4-sk-txt" placeholder="Registrar kilos de Sentadilla Frontal..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series x 3 Reps (Incrementar kilos versus S1)</span><span class="metric-badge">Descanso: 120s</span></div>
+                        <textarea id="w2d4-sk-txt" placeholder="Kilos anotados en Front Squat de S2..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD METABÓLICO DE INTERVALOS ALTA QUEMA</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Intervalos en Zona de Cardio y Musculación)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: #e500ff;">
-                        <h3>WOD: "LEG DEMON EMOM"</h3>
-                        <p><strong>Formato: EMOM de 12 Minutos</strong> (Ejecuta las repeticiones dentro de cada minuto).</p>
+                        <h3>WOD: "COMMERCIAL PIERNA EMOM"</h3>
+                        <p><strong>Formato: EMOM de 12 Minutos continuos</strong> (Ejecuta las repeticiones dentro de cada minuto).</p>
                         <ul>
-                            <li><strong>Minuto 1:</strong> 15 Box Jumps (Saltos estables a cajón de 60cm con extensión total de cadera arriba).</li>
-                            <li><strong>Minuto 2:</strong> 15 Front Squats dinámicas con barra olímpica (Carga fija sugerida de 40kg).</li>
-                            <li><strong>Minuto 3:</strong> 20 Jumping Lunges alternos (Zancadas saltando de alta velocidad).</li>
-                            <li><strong>Minuto 4:</strong> Descanso Absoluto. (Repetir el ciclo completo 3 veces consecutivas).</li>
+                            <li><strong>Minuto 1:</strong> 15 Subidas explosivas a Banco Plano de musculación alternando piernas (Sustituto perfecto de Box Jumps si no hay cajones de madera).</li>
+                            <li><strong>Minuto 2:</strong> 15 Front Squats dinámicas con barra olímpica ligera o barra fija pesada (Carga constante de 35kg-40kg).</li>
+                            <li><strong>Minuto 3:</strong> 20 Jumping Lunges en el sitio (Zancadas saltando de alta velocidad sin moverte del sitio).</li>
+                            <li><strong>Minuto 4:</strong> Descanso absoluto. (Repetir el bloque de 4 minutos 3 veces en total).</li>
                         </ul>
-                        <textarea id="w2d4-wod-txt" placeholder="Notas de rendimiento, ¿completaste las reps en todos los minutos?..."></textarea>
+                        <textarea id="w2d4-wod-txt" placeholder="¿Lograste completar las reps dentro de cada minuto?..."></textarea>
                     </div>
                 </div>
 
                 <div class="phase-title phase-gym">FASE 5: GIMNASIO / HIPERTROFIA COMPLEMENTARIA MECÁNICA (Tren Inferior)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d4-g1-chk">
-                                <span class="ex-title">1. High Bar Back Squat (Sentadilla Trasera - Serie Pesada Eficiente)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d4-g1-chk">
+                            <span class="ex-title">1. High Bar Back Squat (Sentadilla Trasera - Serie Pesada de Fuerza)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">5 Repeticiones (Fuerza mecánica pura)</span><span class="metric-badge">Descanso: 150s</span><span class="metric-badge">RPE: 8.5/10</span></div>
-                        <textarea id="w2d4-g1-txt" placeholder="Registrar kilos..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">5 Reps</span><span class="metric-badge">Descanso: 150s</span></div>
+                        <textarea id="w2d4-g1-txt" placeholder="Kilos de sentadilla..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d4-g2-chk">
-                            <span class="ex-title">2. Peso Muerto Rumano con Barra (Sube peso con respecto a la semana anterior)</span>
+                            <span class="ex-title">2. Peso Muerto Rumano con Barra (RDL pesado controlando rango)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">8 Repeticiones controladas</span></div>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">8 Reps</span></div>
                         <textarea id="w2d4-g2-txt" placeholder="Pesos..."></textarea>
                     </div>
 
@@ -976,25 +900,25 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d4-g4-chk">
-                            <span class="ex-title">4. Elevación de Gemelos Sentado en Máquina (Énfasis en Sóleo)</span>
+                            <span class="ex-title">4. Elevación de Gemelos Sentado en Máquina (Sóleo)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">15 Repeticiones pesadas ralentizando la bajada</span></div>
-                        <textarea id="w2d4-g4-txt" placeholder="Pesos gemelo..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">15 Reps ralentizando la bajada</span></div>
+                        <textarea id="w2d4-g4-txt" placeholder="Pesos..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--warning-neon);">
-                    <span>VIERNES (SEMANA 2): HOMBRO, BÍCEPS Y TRÍCEPS COMPACTO</span>
+                    <span>VIERNES (SEMANA 2): HOMBRO, BÍCEPS & TRÍCEPS COMPACTO</span>
                 </div>
 
-                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR ARTICULAR HIGHER</div>
+                <div class="phase-title phase-mobility">FASE 1: MOVILIDAD ARTICULAR</div>
                 <div class="phase-body">
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d5-mob-chk">
-                            <span class="ex-title">Movilidad escapular y rotación con elásticos de resistencia</span>
+                            <span class="ex-title">Movilidad escapular en polea ligera o usando bandas elásticas de resistencia</span>
                         </div>
                         <textarea id="w2d5-mob-txt" placeholder="Notas..."></textarea>
                     </div>
@@ -1005,42 +929,40 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d5-warm-chk">
-                            <span class="ex-title">Activación Óptima General de Brazos</span>
+                            <span class="ex-title">Activación Completa de Brazos y Deltoides</span>
                         </div>
                         <p>3 Rondas:</p>
                         <ul>
-                            <li>8 Caminatas de oso integrales (Inchworms)</li>
-                            <li>12 Flexiones con manos juntas (Tríceps activation)</li>
-                            <li>50 Saltos de comba simples rápidos</li>
+                            <li>8 Flexiones con manos juntas en diamante (Énfasis tríceps)</li>
+                            <li>10 Caminatas de oruga (Inchworms estirando cadena posterior)</li>
+                            <li>45s Jumping Jacks a máxima velocidad</li>
                         </ul>
                         <textarea id="w2d5-warm-txt" placeholder="Notas..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-skill">FASE 3: CROSSFIT SKILL / HALTEROFILIA</div>
+                <div class="phase-title phase-skill">FASE 3: ADAPTACIÓN CROSSFIT SKILL (Potencia Unilateral Mancuerna)</div>
                 <div class="phase-body">
                     <div class="exercise-row">
-                        <div class="ex-meta-header">
-                            <div class="ex-title-area">
-                                <input type="checkbox" class="check-box" id="w2d5-sk-chk">
-                                <span class="ex-title">Hang Power Snatch (Perfeccionamiento técnico acelerado)</span>
-                            </div>
+                        <div class="ex-title-area">
+                            <input type="checkbox" class="check-box" id="w2d5-sk-chk">
+                            <span class="ex-title">Dumbbell Hang Power Snatch (Perfeccionamiento técnico pesado)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">5 Series x 2 Reps (Añadir ligeros discos laterales de carga)</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w2d5-sk-txt" placeholder="Registrar peso arranques..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">5 Series x 2 Reps por lado (Sube el peso de la mancuerna)</span><span class="metric-badge">Descanso: 90s</span></div>
+                        <textarea id="w2d5-sk-txt" placeholder="Kilos de la arrancada unilateral..."></textarea>
                     </div>
                 </div>
 
-                <div class="phase-title phase-wod">FASE 4: CROSSFIT WOD METABÓLICO</div>
+                <div class="phase-title phase-wod">FASE 4: ADAPTACIÓN CROSSFIT WOD (Metabólico de Mancuerna Doble)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--warning-neon);">
-                        <h3>WOD: "SHOULDER SMASH AMRAP"</h3>
-                        <p><strong>Formato: AMRAP de 10 Minutos continuos</strong> (Velocidad de ejecución constante).</p>
+                        <h3>WOD: "SHOULDER DUMBBELL SMASH"</h3>
+                        <p><strong>Formato: AMRAP de 10 Minutos continuos</strong></p>
                         <ul>
-                            <li>10 Thrusters con barra olímpica libre (Sentadilla frontal profunda hilada con press de hombros vertical fluido - 30kg)</li>
-                            <li>10 Kettlebell Snatches de un solo brazo alternos (5 por lado con mancuerna o KB)</li>
+                            <li>10 Double Dumbbell Thrusters (Sentadilla profunda con dos mancuernas en los hombros y empuje vertical simultáneo al subir - Peso sugerido moderado).</li>
+                            <li>10 Alternating Dumbbell Snatches desde el suelo (Arrancada explosiva con un solo brazo alternando).</li>
                         </ul>
-                        <textarea id="w2d5-wod-txt" placeholder="Rondas totales ejecutadas..."></textarea>
+                        <textarea id="w2d5-wod-txt" placeholder="Rondas totales conseguidas en el AMRAP..."></textarea>
                     </div>
                 </div>
 
@@ -1049,45 +971,41 @@
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d5-g1-chk">
-                            <span class="ex-title">1. Press Militar Estricto con Barra de Pie (Aumentar peso de base de S1)</span>
+                            <span class="ex-title">1. Press Militar Estricto con Barra de Pie (Overhead Press de fuerza)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Repeticiones estables</span><span class="metric-badge">Descanso: 90s</span></div>
-                        <textarea id="w2d5-g1-txt" placeholder="Kilos de la sesión militar..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">6 Reps estables</span><span class="metric-badge">Descanso: 90s</span></div>
+                        <textarea id="w2d5-g1-txt" placeholder="Pesos barra..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d5-g2-chk">
-                            <span class="ex-title">2. Elevaciones Laterales con Mancuerna (Técnica estricta con drop-set final)</span>
+                            <span class="ex-title">2. Elevaciones Laterales con Mancuerna (Con Drop-Set final al fallo)</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">12 Repeticiones pesadas (En la última serie baja el peso a la mitad y haz reps al fallo)</span></div>
-                        <textarea id="w2d5-g2-txt" placeholder="Pesos de mancuernas..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">4 Series</span><span class="metric-badge">12 Reps (En la última serie baja el peso a la mitad y haz reps infinitas hasta quemar)</span></div>
+                        <textarea id="w2d5-g2-txt" placeholder="Pesos..."></textarea>
                     </div>
 
                     <div class="exercise-row">
                         <div class="ex-title-area">
                             <input type="checkbox" class="check-box" id="w2d5-g3-chk">
-                            <span class="ex-title">3. SUPERSERIE DE BRAZO COMPLETA: Curl Predicador con Mancuerna individual + Extensión de Tríceps sobre cabeza en polea baja con cuerda</span>
+                            <span class="ex-title">3. SUPERSERIE DE BRAZO: Curl Predicador con Mancuerna individual + Extensión de Tríceps sobre cabeza en polea baja con cuerda</span>
                         </div>
-                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps fijas</span></div>
-                        <textarea id="w2d5-g3-txt" placeholder="Notas finales de cargas..."></textarea>
+                        <div class="ex-specs"><span class="metric-badge">3 Series</span><span class="metric-badge">12 + 12 Reps</span></div>
+                        <textarea id="w2d5-g3-txt" placeholder="Pesos de brazos..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="day-block">
                 <div class="day-header" style="border-bottom-color: var(--success-neon);">
-                    <span>SÁBADO (SEMANA 2): RUTA DE CAPACIDAD CARDIOVASCULAR AVANZADA</span>
+                    <span>SÁBADO (SEMANA 2): RESISTENCIA AVANZADA EN CARRETERA</span>
                 </div>
-                <div class="phase-title phase-bike">FASE ÚNICA: SALIDA DE FONDO Y UMBRAL ANERÓBICO POTENTE</div>
+                <div class="phase-title phase-bike">FASE ÚNICA: SALIDA DE FONDO Y UMBRAL ANERÓBICO POTENTE (VAN RYSEL)</div>
                 <div class="phase-body">
                     <div class="wod-box" style="border-color: var(--success-neon);">
-                        <p><strong>Objetivo:</strong> Incrementar la tolerancia al lactato bajo condiciones sostenidas en la Van Rysel.</p>
-                        <p><strong>Protocolo de ruta en carretera:</strong> Volumen total de <strong>80 a 100 Kilómetros totales</strong>.</p>
-                        <ul>
-                            <li><strong>Trabajo de Intervalo Central:</strong> Incluye dentro de la ruta **2 Bloques de 20 Minutos continuos en Sweet Spot / Umbral de Potencia** (Pulsaciones elevadas, simulando ritmo de carrera de contrarreloj), descansando 10 minutos rodando suave en Zona 2 entre ambos bloques.</li>
-                        </ul>
-                        <textarea id="w2d6-bike-txt" placeholder="Kilómetros de la sesión avanzada, tiempo total de rodaje y sensaciones de fatiga en piernas..."></textarea>
+                        <p><strong>Protocolo en ruta:</strong> De 80 a 100 Kilómetros totales en exterior. Incluye dentro del trayecto 2 bloques de 20 minutos estables en Sweet Spot / Umbral de potencia (Zona 3 avanzada / Zona 4 inicial), descansando 10 minutos suaves en Zona 2 entre ambos bloques.</p>
+                        <textarea id="w2d6-bike-txt" placeholder="Detalles de la salida en bici (Kms, desnivel, sensaciones generales)..."></textarea>
                     </div>
                 </div>
             </div>
@@ -1097,8 +1015,8 @@
                     <span>DOMINGO (SEMANA 2): DESCANSO TOTAL Y BALANCE DE LA QUINCENA</span>
                 </div>
                 <div class="phase-body">
-                    <p>Descanso mecánico total. Regeneración celular. Analiza las anotaciones de pesos guardadas en el sistema para programar tus siguientes objetivos de fuerza.</p>
-                    <textarea id="w2d7-rest-txt" placeholder="Evaluación general del rendimiento físico de estas 2 semanas completas..."></textarea>
+                    <p>Descanso mecánico completo. Regeneración del sistema nervioso central. Revisa los datos de pesos almacenados en el sistema de guardado para definir las cargas de las semanas siguientes.</p>
+                    <textarea id="w2d7-rest-txt" placeholder="Evaluación del rendimiento final del microciclo de dos semanas..."></textarea>
                 </div>
             </div>
 
@@ -1107,7 +1025,7 @@
     </div>
 
     <script>
-        // --- NAVEGACIÓN ENTRE SEMANAS DE ENTRENAMIENTO ---
+        // --- NAVEGACIÓN ENTRE SEMANAS ---
         function changeWeek(event, weekId) {
             document.querySelectorAll('.week-content').forEach(element => element.classList.remove('active'));
             document.querySelectorAll('.week-btn').forEach(btn => btn.classList.remove('active'));
@@ -1116,7 +1034,7 @@
             window.scrollTo(0, 0);
         }
 
-        // --- MOTOR DEL CRONÓMETRO INTERNO DE CROSSFIT ---
+        // --- MOTOR DEL CRONÓMETRO INTERNO ---
         let timerInterval, totalSeconds = 0, clockRunning = false;
         const clockDisplay = document.getElementById('clock');
 
@@ -1137,7 +1055,7 @@
                         totalSeconds++;
                     } else {
                         totalSeconds--;
-                        if (totalSeconds <= 0) totalSeconds = 60; // Bucle continuo de EMOM
+                        if (totalSeconds <= 0) totalSeconds = 60; // Reinicio en EMOM
                     }
                     renderClockTime();
                 }, 1000);
@@ -1162,7 +1080,6 @@
         }
 
         // --- SISTEMA INTEGRAL DE PERSISTENCIA LOCAL STORAGE ---
-        // Guarda de forma automática e instantánea al escribir y al marcar los checkboxes.
         document.querySelectorAll('textarea').forEach(textarea => {
             const storageKey = textarea.id;
             if (localStorage.getItem(storageKey)) {
